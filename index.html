@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brandin Hall — Creative Director</title>
+  <meta name="description" content="Brandin Hall is a Creative Director specializing in AI, Branding, and Web Design with 15+ years of experience.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+</head>
+<body>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-text">
+      <span>B</span><span>R</span><span>A</span><span>N</span><span>D</span><span>I</span><span>N</span>
+      <span class="preloader-space"></span>
+      <span>H</span><span>A</span><span>L</span><span>L</span>
+    </div>
+    <div class="preloader-bar">
+      <div class="preloader-bar-fill"></div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <a href="#intro-hero" class="nav-logo">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+        <path d="M10 10H30V14H14V18H26V22H14V26H30V30H10V10Z" fill="white"/>
+      </svg>
+    </a>
+    <div class="nav-right">
+      <a href="#footer" class="nav-cta">Connect With Me</a>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Side Badge -->
+  <div class="side-badge">
+    <div class="badge-w">w.</div>
+    <div class="badge-text">Honors</div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-content">
+      <a href="#featured-work">Work</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#clients">Clients</a>
+      <a href="#awards">Awards</a>
+      <a href="#footer">Contact</a>
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 1: INTRO HERO ==================== -->
+  <section class="intro-hero" id="intro-hero">
+    <div class="intro-hero-bg">
+      <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1400&h=900&fit=crop" alt="AI Head" class="intro-hero-img">
+    </div>
+    <div class="intro-hero-content">
+      <span class="intro-hero-subtitle">CREATIVE DIRECTOR</span>
+      <h1 class="intro-hero-name">BRANDIN<br>HALL</h1>
+    </div>
+    <div class="intro-hero-bottom">
+      <span>BASED IN HAMILTON, ONTARIO</span>
+      <span>SPECIALIZING IN AI, BRANDING, & WEB DESIGN</span>
+      <span>15+ YEARS EXPERIENCE</span>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 2: HERO TYPOGRAPHY ==================== -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h2 class="hero-title">
+        <span class="hero-line">IN A WORLD FILLED</span>
+        <span class="hero-line">WITH GENERIC AI</span>
+        <span class="hero-line">NOISE, <span class="hero-img-inline"><img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=120&h=80&fit=crop" alt="AI"></span> I HELP</span>
+        <span class="hero-line">BRANDS UNCOVER</span>
+        <span class="hero-line hero-line-gray">THEIR WHY <span class="hero-img-inline"><img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=120&h=80&fit=crop" alt="Work"></span> AND</span>
+        <span class="hero-line hero-line-gray">SCALE IT WITH</span>
+        <span class="hero-line hero-line-gray">CREATIVITY <span class="hero-img-inline hero-img-color"><img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=120&h=80&fit=crop" alt="Creative"></span> AND</span>
+        <span class="hero-line hero-line-gray">TECHNOLOGY DRIVEN</span>
+        <span class="hero-line hero-line-gray">BY STRATEGY.</span>
+      </h2>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 3: FEATURED WORK ==================== -->
+  <section class="featured-work" id="featured-work">
+    <div class="featured-work-top-bar"></div>
+    <div class="featured-work-container">
+      <div class="featured-work-header">
+        <div class="featured-work-left">
+          <div class="section-label">FEATURED WORK</div>
+          <div class="section-label-jp">代表作</div>
+        </div>
+        <div class="featured-work-right">
+          <h2 class="featured-work-heading">SELECTED WORK SHAPING BRANDS, PRODUCTS, AND EXPERIENCES</h2>
+        </div>
+      </div>
+      <div class="featured-work-list">
+        <a href="work/armada.html" class="work-item" data-img="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=400&h=300&fit=crop">
+          <span class="work-item-name">Armada</span>
+          <span class="work-item-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 20L20 4M20 4H8M20 4V16" stroke="currentColor" stroke-width="2"/></svg>
+          </span>
+          <div class="work-item-preview"><img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=400&h=300&fit=crop" alt="Armada"></div>
+        </a>
+        <a href="work/wild-flower.html" class="work-item" data-img="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&h=300&fit=crop">
+          <span class="work-item-name">Wild Flower</span>
+          <span class="work-item-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 20L20 4M20 4H8M20 4V16" stroke="currentColor" stroke-width="2"/></svg>
+          </span>
+          <div class="work-item-preview"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&h=300&fit=crop" alt="Wild Flower"></div>
+        </a>
+        <a href="work/zenith-vr.html" class="work-item" data-img="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=400&h=300&fit=crop">
+          <span class="work-item-name">Zenith VR</span>
+          <span class="work-item-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 20L20 4M20 4H8M20 4V16" stroke="currentColor" stroke-width="2"/></svg>
+          </span>
+          <div class="work-item-preview"><img src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=400&h=300&fit=crop" alt="Zenith VR"></div>
+        </a>
+        <a href="work/mayfield.html" class="work-item" data-img="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop">
+          <span class="work-item-name">Mayfield</span>
+          <span class="work-item-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 20L20 4M20 4H8M20 4V16" stroke="currentColor" stroke-width="2"/></svg>
+          </span>
+          <div class="work-item-preview"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop" alt="Mayfield"></div>
+        </a>
+        <a href="work/eden-exotics.html" class="work-item" data-img="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop">
+          <span class="work-item-name">Eden Exotics</span>
+          <span class="work-item-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 20L20 4M20 4H8M20 4V16" stroke="currentColor" stroke-width="2"/></svg>
+          </span>
+          <div class="work-item-preview"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop" alt="Eden Exotics"></div>
+        </a>
+        <a href="work/oso.html" class="work-item" data-img="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=400&h=300&fit=crop">
+          <span class="work-item-name">OSO</span>
+          <span class="work-item-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 20L20 4M20 4H8M20 4V16" stroke="currentColor" stroke-width="2"/></svg>
+          </span>
+          <div class="work-item-preview"><img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=400&h=300&fit=crop" alt="OSO"></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 4: EXPERTISE ==================== -->
+  <section class="expertise" id="expertise">
+    <div class="expertise-header">
+      <div class="expertise-left-header">
+        <div class="expertise-label">MY EXPERTISE</div>
+        <div class="expertise-label-jp">専門分野</div>
+      </div>
+      <div class="expertise-right-header">
+        <h2 class="expertise-main-heading">CRAFTING DIGITAL EXPERIENCES THROUGH VISION, DESIGN, AND AI</h2>
+      </div>
+    </div>
+
+    <!-- EXPERTISE 01 — AI -->
+    <div class="expertise-banner-sticky-bar">
+      <span>MY EXPERTISE</span>
+      <span class="expertise-banner-sticky-jp">専門分野</span>
+    </div>
+    <div class="expertise-banner expertise-banner-red">
+      <div class="expertise-banner-bg-text">クリエイション</div>
+      <div class="expertise-banner-image">
+        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1400&h=700&fit=crop" alt="AI Robot">
+      </div>
+      <div class="expertise-banner-content">
+        <span class="expertise-banner-num">// 01</span>
+        <h3 class="expertise-banner-title">ARTIFICIAL<br>INTELLIGENCE</h3>
+      </div>
+    </div>
+    <div class="expertise-detail">
+      <div class="expertise-detail-inner">
+        <div class="expertise-number">01</div>
+        <div class="expertise-info">
+          <h3 class="expertise-info-title">DESIGNING THE FUTURE WITH INTELLIGENT CREATIVE SYSTEMS</h3>
+          <p class="expertise-info-desc">I use AI as a creative amplifier — building custom tools, producing on-brand imagery, training custom LoRAs, and designing automated workflows that accelerate output. Across image, video, audio, copy, and code, AI removes the friction once inherent in ideation and iteration, enabling faster exploration, broader experimentation, and more fully realized creative ideas.</p>
+          <div class="expertise-list">
+            <div class="expertise-list-item"><span>Generative AI Systems</span><span>01</span></div>
+            <div class="expertise-list-item"><span>AI-Assisted Development</span><span>02</span></div>
+            <div class="expertise-list-item"><span>Custom LoRA Training</span><span>03</span></div>
+            <div class="expertise-list-item"><span>Advanced Prompt Engineering</span><span>04</span></div>
+            <div class="expertise-list-item"><span>Workflow Automation (n8n)</span><span>05</span></div>
+            <div class="expertise-list-item"><span>Creative AI Pipelines</span><span>06</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPERTISE 02 — CREATIVE LEADERSHIP -->
+    <div class="expertise-banner-sticky-bar">
+      <span>MY EXPERTISE</span>
+      <span class="expertise-banner-sticky-jp">専門分野</span>
+    </div>
+    <div class="expertise-banner expertise-banner-red">
+      <div class="expertise-banner-bg-text">リーダーシップ</div>
+      <div class="expertise-banner-image">
+        <img src="https://images.unsplash.com/photo-1590086782957-93c06ef21604?w=1400&h=700&fit=crop" alt="Samurai">
+      </div>
+      <div class="expertise-banner-content">
+        <span class="expertise-banner-num">// 02</span>
+        <h3 class="expertise-banner-title">CREATIVE<br>LEADERSHIP</h3>
+      </div>
+    </div>
+    <div class="expertise-detail">
+      <div class="expertise-detail-inner">
+        <div class="expertise-number">02</div>
+        <div class="expertise-info">
+          <h3 class="expertise-info-title">UNIFYING VISION, STRATEGY, AND EXECUTION INTO COHESIVE EXPERIENCES</h3>
+          <p class="expertise-info-desc">I provide brand-first creative direction rooted in vision and clarity — uncovering a brand's "why" and aligning design, voice, and experience into cohesive systems. I connect the big picture across visual, written, audio, and motion to ensure every touchpoint feels intentional.</p>
+          <div class="expertise-list">
+            <div class="expertise-list-item"><span>Brand Vision & Alignment</span><span>01</span></div>
+            <div class="expertise-list-item"><span>Art Direction</span><span>02</span></div>
+            <div class="expertise-list-item"><span>Cross-Disciplinary Leadership</span><span>03</span></div>
+            <div class="expertise-list-item"><span>Concept Development</span><span>04</span></div>
+            <div class="expertise-list-item"><span>Design Systems Thinking</span><span>05</span></div>
+            <div class="expertise-list-item"><span>Visual Storytelling</span><span>06</span></div>
+            <div class="expertise-list-item"><span>Stakeholder Collaboration</span><span>07</span></div>
+            <div class="expertise-list-item"><span>Creative Review & Critique</span><span>08</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPERTISE 03 — BRANDING -->
+    <div class="expertise-banner-sticky-bar">
+      <span>MY EXPERTISE</span>
+      <span class="expertise-banner-sticky-jp">専門分野</span>
+    </div>
+    <div class="expertise-banner expertise-banner-red">
+      <div class="expertise-banner-bg-text">ブランディング</div>
+      <div class="expertise-banner-image">
+        <img src="https://images.unsplash.com/photo-1635002962487-6cd868e92266?w=1400&h=700&fit=crop" alt="Robot">
+      </div>
+      <div class="expertise-banner-content">
+        <span class="expertise-banner-num">// 03</span>
+        <h3 class="expertise-banner-title">BRANDING</h3>
+      </div>
+    </div>
+    <div class="expertise-detail">
+      <div class="expertise-detail-inner">
+        <div class="expertise-number">03</div>
+        <div class="expertise-info">
+          <h3 class="expertise-info-title">TRANSFORMING PURPOSE INTO BRANDS PEOPLE FEEL AND BELIEVE IN</h3>
+          <p class="expertise-info-desc">I help brands uncover their "why" and translate it into identity, voice, and positioning that feel authentic and emotionally resonant — creating brands that connect deeply with the people they are meant to serve.</p>
+          <div class="expertise-list">
+            <div class="expertise-list-item"><span>Brand Discovery</span><span>01</span></div>
+            <div class="expertise-list-item"><span>Uncovering the "Why"</span><span>02</span></div>
+            <div class="expertise-list-item"><span>Brand Strategy</span><span>03</span></div>
+            <div class="expertise-list-item"><span>Positioning & Differentiation</span><span>04</span></div>
+            <div class="expertise-list-item"><span>Brand Voice & Messaging</span><span>05</span></div>
+            <div class="expertise-list-item"><span>Brand Guidelines</span><span>06</span></div>
+            <div class="expertise-list-item"><span>Emotional Brand Connection</span><span>07</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPERTISE 04 — WEB DESIGN -->
+    <div class="expertise-banner-sticky-bar">
+      <span>MY EXPERTISE</span>
+      <span class="expertise-banner-sticky-jp">専門分野</span>
+    </div>
+    <div class="expertise-banner expertise-banner-red">
+      <div class="expertise-banner-bg-text">ウエブデザイン</div>
+      <div class="expertise-banner-image">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1400&h=700&fit=crop" alt="Web Design">
+      </div>
+      <div class="expertise-banner-content">
+        <span class="expertise-banner-num">// 04</span>
+        <h3 class="expertise-banner-title">WEB DESIGN &<br>DEVELOPMENT</h3>
+      </div>
+    </div>
+    <div class="expertise-detail">
+      <div class="expertise-detail-inner">
+        <div class="expertise-number">04</div>
+        <div class="expertise-info">
+          <h3 class="expertise-info-title">WHERE THOUGHTFUL DESIGN MEETS SCALABLE ENGINEERING</h3>
+          <p class="expertise-info-desc">With over 20 years of experience, I design and build conversion-focused websites that balance aesthetics and usability — specializing in UX/UI, WordPress development, custom code, and integrating generative AI into modern digital products.</p>
+          <div class="expertise-list">
+            <div class="expertise-list-item"><span>UX/UI Design</span><span>01</span></div>
+            <div class="expertise-list-item"><span>Conversion-Focused Design</span><span>02</span></div>
+            <div class="expertise-list-item"><span>Web Architecture</span><span>03</span></div>
+            <div class="expertise-list-item"><span>WordPress Development</span><span>04</span></div>
+            <div class="expertise-list-item"><span>Custom Theme Development</span><span>05</span></div>
+            <div class="expertise-list-item"><span>JavaScript</span><span>06</span></div>
+            <div class="expertise-list-item"><span>AI-Integrated Applications</span><span>07</span></div>
+            <div class="expertise-list-item"><span>Modern Dev Workflows (Replit, Cursor, Antigravity)</span><span>08</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPERTISE 05 — PERFORMANCE CREATIVE -->
+    <div class="expertise-detail">
+      <div class="expertise-detail-inner">
+        <div class="expertise-number">05</div>
+        <div class="expertise-info">
+          <h3 class="expertise-info-title">DESIGNING PERFORMANCE-DRIVEN CREATIVE THAT TURNS ATTENTION INTO ACTION</h3>
+          <p class="expertise-info-desc">I design performance-driven digital creative that turns attention into action — crafting social content, paid ads, and campaign systems optimized for conversion, clarity, and consistency, guided by audience insight, creative testing, and measurable results.</p>
+          <div class="expertise-list">
+            <div class="expertise-list-item"><span>Conversion-Focused Creative</span><span>01</span></div>
+            <div class="expertise-list-item"><span>Paid Media Creative Strategy</span><span>02</span></div>
+            <div class="expertise-list-item"><span>Campaign Systems Design</span><span>03</span></div>
+            <div class="expertise-list-item"><span>Funnel-Aware Creative</span><span>04</span></div>
+            <div class="expertise-list-item"><span>Platform-Specific Optimization</span><span>05</span></div>
+            <div class="expertise-list-item"><span>Visual Consistency at Scale</span><span>06</span></div>
+            <div class="expertise-list-item"><span>Performance-Driven Storytelling</span><span>07</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 5: STATS ==================== -->
+  <section class="stats" id="stats">
+    <div class="stats-dot-pattern"></div>
+    <div class="stats-container">
+      <div class="stat-row">
+        <div class="stat-number" data-target="85">0<sup>+</sup></div>
+        <div class="stat-label">Brands Directed</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-row">
+        <div class="stat-number" data-target="18">0<sup>+</sup></div>
+        <div class="stat-label">Different Sectors<br>Served.</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-row">
+        <div class="stat-number" data-target="500">0<sup>+</sup></div>
+        <div class="stat-label">Creative<br>Deployments</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 6: AWARDS ==================== -->
+  <section class="awards" id="awards">
+    <div class="awards-container">
+      <div class="awards-header">
+        <div class="awards-left">
+          <div class="section-label">AWARDS & RECOGNITION</div>
+          <div class="section-label-jp">受賞・表彰</div>
+        </div>
+        <div class="awards-right">
+          <h2 class="awards-heading">CREATIVE LEADERSHIP THAT DIRECTLY DROVE AGENCY-WIDE RECOGNITION AND GROWTH</h2>
+        </div>
+      </div>
+      <div class="awards-table">
+        <div class="awards-row">
+          <div class="award-company">Muse Marketing Group</div>
+          <div class="award-org">Clutch</div>
+          <div class="award-title">Top Marketing Agency in Canada</div>
+          <div class="award-year">2020</div>
+        </div>
+        <div class="awards-row highlight">
+          <div class="award-company">Muse Marketing Group</div>
+          <div class="award-org">Hamilton Spectator</div>
+          <div class="award-title">Best Local Advertising Agency (Platinum)</div>
+          <div class="award-year">2015–2016</div>
+        </div>
+        <div class="awards-row">
+          <div class="award-company">Muse Marketing Group</div>
+          <div class="award-org">Hamilton Spectator</div>
+          <div class="award-title">Best Video Services (Platinum)</div>
+          <div class="award-year">2016</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 7: ABOUT ==================== -->
+  <section class="about" id="about">
+    <div class="about-bg-text">
+      <span>CREATIVE</span>
+      <span>DIRECTOR</span>
+    </div>
+    <div class="about-dot-pattern about-dot-tl"></div>
+    <div class="about-dot-pattern about-dot-tr"></div>
+    <div class="about-dot-pattern about-dot-bl"></div>
+    <div class="about-portrait">
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop&crop=face" alt="Brandin Hall Portrait">
+    </div>
+    <div class="about-bio">
+      <p>Since the moment I could hold a pencil, I've been obsessed with creating. Drawing anime for hours, making music with my best friend, then that life-changing day in 8th grade when my computer class introduced me to GeoCities. From that second on, I was hooked — building fan sites for Dragon Ball Z and The Legend of Zelda, obsessively tweaking layouts, collecting info, and trying to out-design every other kid's site.</p>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 8: EXPERIENCE ==================== -->
+  <section class="experience" id="experience">
+    <div class="experience-container">
+      <div class="experience-header">
+        <div class="experience-left">
+          <div class="section-label-dark">MY EXPERIENCE</div>
+          <div class="section-label-jp-dark">経験</div>
+        </div>
+        <div class="experience-right">
+          <h2 class="experience-heading">WORK EXPERIENCE SPANNING 15+ YEARS OF CREATIVITY, IMAGINATION, AND PASSION.</h2>
+        </div>
+      </div>
+      <div class="experience-list">
+        <!-- JumpFactor -->
+        <div class="exp-item">
+          <button class="exp-header">
+            <span class="exp-company">JumpFactor</span>
+            <span class="exp-toggle">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="8" y1="14" x2="20" y2="14" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="14" y1="8" x2="14" y2="20" stroke="currentColor" stroke-width="1.5" class="plus-v"/>
+              </svg>
+            </span>
+          </button>
+          <div class="exp-body">
+            <div class="exp-meta">
+              <div class="exp-meta-left">
+                <span class="exp-role-tag">Creative Director</span>
+                <p class="exp-summary">Partnered with executive leadership to define brand purpose, reposition the organization, and elevate creative strategy as a core business driver.</p>
+              </div>
+              <div class="exp-meta-right">
+                <span class="exp-location">Toronto, ON · May 2025 – March 2026</span>
+                <ul class="exp-details">
+                  <li>Led brand discovery and positioning workshops ("Uncover Your Greatness"), aligning leadership, teams, and long-term vision across the organization.</li>
+                  <li>Architected a complete internal brand replatform, modernizing visual systems for consistency, scalability, and stronger market authority.</li>
+                  <li>Directed rapid turnaround rebrand and website realignment for a subsidiary business, resolving brand perception and conversion issues within months.</li>
+                  <li>Provided strategic creative leadership across design, development, and marketing teams, improving execution velocity and reducing cross-functional friction.</li>
+                  <li>Implemented AI-powered creative workflows that accelerated on-brand asset and video production by 40–60% while preserving creative integrity.</li>
+                  <li>Served as a senior creative advisor, translating complex business objectives into cohesive brand, marketing, and experiential strategies.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- FutureCraft -->
+        <div class="exp-item">
+          <button class="exp-header">
+            <span class="exp-company">FutureCraft</span>
+            <span class="exp-toggle">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="8" y1="14" x2="20" y2="14" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="14" y1="8" x2="14" y2="20" stroke="currentColor" stroke-width="1.5" class="plus-v"/>
+              </svg>
+            </span>
+          </button>
+          <div class="exp-body">
+            <div class="exp-meta">
+              <div class="exp-meta-left">
+                <span class="exp-role-tag">Senior Designer</span>
+                <p class="exp-summary">Led design initiatives for emerging tech brands, delivering high-impact visual identities and digital experiences.</p>
+              </div>
+              <div class="exp-meta-right">
+                <span class="exp-location">Remote · 2023 – 2025</span>
+                <ul class="exp-details">
+                  <li>Designed and delivered brand systems for 12+ clients across tech, SaaS, and e-commerce sectors.</li>
+                  <li>Developed comprehensive design guidelines ensuring brand consistency across all touchpoints.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Muse Marketing Group -->
+        <div class="exp-item">
+          <button class="exp-header">
+            <span class="exp-company">Muse Marketing Group</span>
+            <span class="exp-toggle">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="8" y1="14" x2="20" y2="14" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="14" y1="8" x2="14" y2="20" stroke="currentColor" stroke-width="1.5" class="plus-v"/>
+              </svg>
+            </span>
+          </button>
+          <div class="exp-body">
+            <div class="exp-meta">
+              <div class="exp-meta-left">
+                <span class="exp-role-tag">Founding Partner & Creative Director</span>
+                <p class="exp-summary">Helped grow and shape a boutique agency into a nationally recognized firm through brand leadership, systems thinking, and high-impact creative execution.</p>
+              </div>
+              <div class="exp-meta-right">
+                <span class="exp-location">Hamilton, ON · 2015 – 2023</span>
+                <ul class="exp-details">
+                  <li>Partnered in scaling the agency from a founding team of 3 to a multidisciplinary team of 12, supporting operational growth, process maturity, and creative output.</li>
+                  <li>Contributed to national recognition as a Top Marketing Agency in Canada (Clutch, 2020) and Best Local Advertising Agency for three consecutive years.</li>
+                  <li>Led the agency's internal rebrand and positioning, strengthening market perception and supporting accelerated growth.</li>
+                  <li>Built, managed, and mentored multidisciplinary teams across design, photography, development, copywriting, SEO, and brand strategy.</li>
+                  <li>Directed over 80 website launches and numerous brand engagements, overseeing work from executive discovery through launch and post-launch evolution.</li>
+                  <li>Designed and implemented proprietary discovery workshops and long-term client partnership programs that elevated work quality, improved retention, and increased recurring revenue.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 9: CLIENTS (after Experience) ==================== -->
+  <section class="clients" id="clients">
+    <div class="clients-container">
+      <div class="clients-left">
+        <div class="section-label">CLIENTS I'VE WORKED WITH</div>
+        <div class="section-label-jp">これまでのクライアント</div>
+        <h2 class="clients-heading">A DECADE OF SHAPING BRAND IDENTITIES FOR GLOBAL TECH LEADERS AND LOCAL CULTURAL ICONS.</h2>
+        <a href="#footer" class="connect-btn">
+          Connect with me
+          <span class="connect-arrow">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div class="clients-right">
+        <div class="accordion">
+          <!-- Arts, Entertainment & Venues -->
+          <div class="accordion-item active">
+            <button class="accordion-header">
+              <span class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.5"/>
+                  <line x1="7" y1="12" x2="17" y2="12" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </span>
+              <span class="accordion-title">Arts, Entertainment & Venues</span>
+            </button>
+            <div class="accordion-body">
+              <ul>
+                <li>97 South Song Sessions</li>
+                <li>Desert Star Estate</li>
+                <li>Lauzon Music</li>
+                <li>Liz Long</li>
+                <li>Ottawa Black Bears</li>
+                <li>Paranormal Tours</li>
+                <li>Reid Flocking</li>
+                <li>Steady Canoe Studio</li>
+                <li>Telling Tales Festival</li>
+                <li>The Cotton Factory</li>
+                <li>Tim Hawkes Music</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Legal & Professional -->
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.5"/>
+                  <line x1="7" y1="12" x2="17" y2="12" stroke="currentColor" stroke-width="1.5"/>
+                  <line x1="12" y1="7" x2="12" y2="17" stroke="currentColor" stroke-width="1.5" class="plus-v"/>
+                </svg>
+              </span>
+              <span class="accordion-title">Legal & Professional</span>
+            </button>
+            <div class="accordion-body">
+              <ul>
+                <li>Ross & McBride LLP</li>
+                <li>SimpsonWigle LAW</li>
+                <li>Millars Lawyers</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Construction, Trades & Auto -->
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.5"/>
+                  <line x1="7" y1="12" x2="17" y2="12" stroke="currentColor" stroke-width="1.5"/>
+                  <line x1="12" y1="7" x2="12" y2="17" stroke="currentColor" stroke-width="1.5" class="plus-v"/>
+                </svg>
+              </span>
+              <span class="accordion-title">Construction, Trades & Auto</span>
+            </button>
+            <div class="accordion-body">
+              <ul>
+                <li>Lakeshore Homes</li>
+                <li>Turkstra Lumber</li>
+                <li>Birchwood Automotive</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Manufacturing & Logistics -->
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.5"/>
+                  <line x1="7" y1="12" x2="17" y2="12" stroke="currentColor" stroke-width="1.5"/>
+                  <line x1="12" y1="7" x2="12" y2="17" stroke="currentColor" stroke-width="1.5" class="plus-v"/>
+                </svg>
+              </span>
+              <span class="accordion-title">Manufacturing & Logistics</span>
+            </button>
+            <div class="accordion-body">
+              <ul>
+                <li>SteelCity Manufacturing</li>
+                <li>Pacific Logistics Group</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Healthcare & Wellness -->
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.5"/>
+                  <line x1="7" y1="12" x2="17" y2="12" stroke="currentColor" stroke-width="1.5"/>
+                  <line x1="12" y1="7" x2="12" y2="17" stroke="currentColor" stroke-width="1.5" class="plus-v"/>
+                </svg>
+              </span>
+              <span class="accordion-title">Healthcare & Wellness</span>
+            </button>
+            <div class="accordion-body">
+              <ul>
+                <li>Wellness Hub</li>
+                <li>Mindful Practice</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Tech, Gaming & Agency -->
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.5"/>
+                  <line x1="7" y1="12" x2="17" y2="12" stroke="currentColor" stroke-width="1.5"/>
+                  <line x1="12" y1="7" x2="12" y2="17" stroke="currentColor" stroke-width="1.5" class="plus-v"/>
+                </svg>
+              </span>
+              <span class="accordion-title">Tech, Gaming & Agency</span>
+            </button>
+            <div class="accordion-body">
+              <ul>
+                <li>JumpFactor</li>
+                <li>FutureCraft</li>
+                <li>Pixel Forge</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 10: FOOTER ==================== -->
+  <footer class="footer" id="footer">
+    <div class="footer-top-bar"></div>
+    <div class="footer-container">
+      <div class="footer-contact">
+        <div class="footer-inquiries">
+          <h3>New Business Inquiries</h3>
+        </div>
+        <div class="footer-email">
+          <span class="footer-email-label">Email</span>
+          <a href="mailto:brandinwhall@gmail.com" class="footer-email-address">brandinwhall (a) gmail.com</a>
+        </div>
+      </div>
+      <div class="footer-about">
+        <div class="footer-about-label">About</div>
+        <p class="footer-about-text">Brandin Hall is a brand designer helping ambitious companies uncover the truth of who they are and turn it into powerful brands. Through strategy, identity, and intelligent systems, he creates work that reveals meaning, shapes perception, and helps exceptional businesses stand apart in an increasingly automated world.</p>
+      </div>
+      <div class="footer-big-name">
+        <span>BRANDIN</span>
+      </div>
+      <div class="footer-clocks">
+        <div class="clock-item">
+          <span class="clock-dot"></span>
+          <span class="clock-city">TORONTO</span>
+          <span class="clock-time" data-tz="America/Toronto"></span>
+        </div>
+        <div class="clock-item">
+          <span class="clock-dot"></span>
+          <span class="clock-city">TOKYO</span>
+          <span class="clock-time" data-tz="Asia/Tokyo"></span>
+        </div>
+        <div class="clock-item">
+          <span class="clock-dot"></span>
+          <span class="clock-city">LONDON</span>
+          <span class="clock-time" data-tz="Europe/London"></span>
+        </div>
+        <div class="clock-item">
+          <span class="clock-dot"></span>
+          <span class="clock-city">PARIS</span>
+          <span class="clock-time" data-tz="Europe/Paris"></span>
+        </div>
+      </div>
+      <div class="footer-bottom-line"></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/script.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>

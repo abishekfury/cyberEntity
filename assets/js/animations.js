@@ -105,6 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
       '.featured-work-heading, .expertise-main-heading, .awards-heading, .experience-heading, .clients-heading, .expertise-info-title'
     );
 
+    const isMobile = window.innerWidth <= 768;
+
     headings.forEach(heading => {
       const words = splitIntoLines(heading);
       
@@ -123,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         stagger: 0.05,
         scrollTrigger: {
           trigger: heading,
-          start: 'top 85%',
+          start: isMobile ? 'top 100%' : 'top 85%',
           toggleActions: 'play none none none',
         }
       });
@@ -134,8 +136,29 @@ document.addEventListener('DOMContentLoaded', () => {
      SECTION REVEALS - FADE UP ON SCROLL
      ============================================================ */
   function initSectionReveals() {
+    // Awards rows — IntersectionObserver reveal (CSS transitions, no GSAP)
+    // GSAP overwrite:true in hover highlights was killing pending scroll-trigger tweens
+    const awardsTable = document.querySelector('.awards-table');
+    if (awardsTable) {
+      const awardsRows = awardsTable.querySelectorAll('.awards-row');
+      const rowObserver = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          awardsRows.forEach((row, i) => {
+            setTimeout(() => {
+              row.classList.add('revealed');
+            }, i * 70);
+          });
+          rowObserver.disconnect();
+        }
+      }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+      rowObserver.observe(awardsTable);
+    }
+
+    // Use a more aggressive start on mobile so elements don't get stuck invisible
+    const isMobile = window.innerWidth <= 768;
+    const triggerStart = isMobile ? 'top 100%' : 'top 88%';
+
     const revealElements = [
-      { selector: '.awards-row', stagger: 0.08 },
       { selector: '.stat-row', stagger: 0.15 },
       { selector: '.exp-item', stagger: 0.12 },
       { selector: '.expertise-detail-inner', stagger: 0 },
@@ -163,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
             delay: stagger * index * 0.6,
             scrollTrigger: {
               trigger: el,
-              start: 'top 88%',
+              start: triggerStart,
               toggleActions: 'play none none none',
             }
           }
@@ -171,22 +194,43 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Special handling for expertise banners
+    // Expertise banners — reveal bottom-to-top (wipe up)
     const banners = document.querySelectorAll('.expertise-banner');
     banners.forEach(banner => {
+      // Banner wipe: inset bottom shrinks from 100% → 0%
       gsap.fromTo(banner,
-        { clipPath: 'inset(100% 0 0 0)' },
+        { clipPath: 'inset(100% 0 0% 0)' },
         {
-          clipPath: 'inset(0% 0 0 0)',
+          clipPath: 'inset(0% 0 0% 0)',
           duration: 1.2,
           ease: 'power4.out',
           scrollTrigger: {
             trigger: banner,
-            start: 'top 90%',
+            start: isMobile ? 'top 100%' : 'top 92%',
             toggleActions: 'play none none none',
           }
         }
       );
+
+      // Character image: reveal from top on scroll
+      const img = banner.querySelector('.expertise-banner-03 img, .expertise-banner-image img');
+      if (img) {
+        gsap.fromTo(img,
+          { y: -80, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1.2,
+            ease: 'power3.out',
+            delay: 0.3,
+            scrollTrigger: {
+              trigger: banner,
+              start: isMobile ? 'top 100%' : 'top 85%',
+              toggleActions: 'play none none none',
+            }
+          }
+        );
+      }
     });
   }
 
@@ -194,13 +238,13 @@ document.addEventListener('DOMContentLoaded', () => {
      SCROLL COLOR CHANGE EFFECTS
      ============================================================ */
   function initScrollColorChange() {
-    // Expertise banner titles color pop
+    // Expertise banner titles — stay white, fade in opacity
     const bannerTitles = document.querySelectorAll('.expertise-banner-title');
     bannerTitles.forEach(title => {
       gsap.fromTo(title,
-        { color: 'rgba(0, 0, 0, 0.4)' },
+        { opacity: 0.4 },
         {
-          color: 'rgba(0, 0, 0, 1)',
+          opacity: 1,
           duration: 0.6,
           ease: 'power2.out',
           scrollTrigger: {
@@ -246,6 +290,13 @@ document.addEventListener('DOMContentLoaded', () => {
             duration: 0.8,
             delay: index * 0.1,
             ease: 'power2.out'
+          });
+        },
+        onLeaveBack: () => {
+          gsap.to(line, {
+            color: 'var(--gray)',
+            duration: 0.6,
+            ease: 'power2.in'
           });
         }
       });
@@ -371,21 +422,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Layer 4: Hero section advanced parallax
-    const heroImg = document.querySelector('.intro-hero-bg img');
-    if (heroImg) {
-      gsap.to(heroImg, {
-        yPercent: 30,
-        scale: 1.1,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '.intro-hero',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 1.5,
-        }
-      });
-    }
+    // Layer 4: Hero section — slideshow handles its own transitions, skip parallax on individual slides
 
     // Layer 5: Featured work section parallax
     const workTopBar = document.querySelector('.featured-work-top-bar');
@@ -461,60 +498,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
 
-      // Layer 2: Banner image with advanced parallax
+      // Layer 2: Image parallax — comes from top as banner enters viewport
       const bannerImg = banner.querySelector('.expertise-banner-image img');
       if (bannerImg) {
         gsap.to(bannerImg, {
-          yPercent: 25,
-          scale: 1.08,
-          rotation: bannerIndex % 2 === 0 ? 1 : -1,
+          yPercent: 12,
           ease: 'none',
           scrollTrigger: {
             trigger: banner,
-            start: 'top bottom',
+            start: 'top 85%',
             end: 'bottom top',
-            scrub: 1.8, // Medium speed
+            scrub: 2,
           }
         });
-
-        // Additional transform for image container
-        const imgContainer = banner.querySelector('.expertise-banner-image');
-        if (imgContainer) {
-          gsap.to(imgContainer, {
-            xPercent: bannerIndex % 2 === 0 ? -3 : 3,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: banner,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: 2.5,
-            }
-          });
-        }
       }
 
-      // Layer 3: Banner content (fastest layer)
+      // Layer 3: Banner content — subtle vertical drift only (no horizontal shake)
       const bannerContent = banner.querySelector('.expertise-banner-content');
       if (bannerContent) {
         gsap.to(bannerContent, {
-          yPercent: -5,
-          xPercent: bannerIndex % 3 === 0 ? 2 : -2,
+          yPercent: -4,
           ease: 'none',
           scrollTrigger: {
             trigger: banner,
             start: 'top bottom',
             end: 'bottom top',
-            scrub: 1.2, // Fastest layer
+            scrub: 1.5,
           }
         });
       }
 
-      // Layer 4: Banner number special effect
+      // Layer 4: Banner number — vertical drift only
       const bannerNum = banner.querySelector('.expertise-banner-num');
       if (bannerNum) {
         gsap.to(bannerNum, {
-          yPercent: -10,
-          rotation: bannerIndex * 5,
+          yPercent: -8,
           ease: 'none',
           scrollTrigger: {
             trigger: banner,
@@ -667,44 +685,49 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ===== HERO TYPOGRAPHY REVEAL ===== */
   function initHeroTypographyReveal() {
     const heroLines = document.querySelectorAll('.hero-line');
-    
-    if (heroLines.length > 0) {
-      // Animate each line from bottom with stagger
-      gsap.fromTo(heroLines, 
-        {
-          y: 100,
-          opacity: 0,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1.2,
-          ease: 'power3.out',
-          stagger: 0.15,
-          scrollTrigger: {
-            trigger: '.hero-content',
-            start: 'top 85%',
-            toggleActions: 'play none none none',
-          }
-        }
-      );
+    if (!heroLines.length) return;
 
-      // Color transition for gray lines
-      const grayLines = document.querySelectorAll('.hero-line-gray');
-      grayLines.forEach(line => {
-        ScrollTrigger.create({
-          trigger: line,
-          start: 'top 70%',
-          onEnter: () => {
-            gsap.to(line, {
-              color: 'rgba(255, 255, 255, 0.85)',
-              duration: 0.8,
-              ease: 'power2.out'
-            });
-          }
-        });
+    const isMobile = window.innerWidth <= 768;
+
+    // Set initial hidden state via GSAP (overrides CSS initial state)
+    gsap.set(heroLines, { opacity: 0, y: 80 });
+
+    // Each line gets its own ScrollTrigger so they reveal one-by-one on
+    // scroll-down and hide one-by-one (in reverse order) on scroll-up.
+    heroLines.forEach((line) => {
+      ScrollTrigger.create({
+        trigger: line,
+        start: isMobile ? 'top 108%' : 'top 90%',
+        end: 'bottom 5%',
+        onEnter: () => {
+          gsap.to(line, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', overwrite: 'auto' });
+        },
+        onLeave: () => {
+          gsap.to(line, { opacity: 0, y: -60, duration: 0.7, ease: 'power2.in', overwrite: 'auto' });
+        },
+        onEnterBack: () => {
+          gsap.to(line, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', overwrite: 'auto' });
+        },
+        onLeaveBack: () => {
+          gsap.to(line, { opacity: 0, y: 80, duration: 0.7, ease: 'power2.in', overwrite: 'auto' });
+        },
       });
-    }
+    });
+
+    // Color transition for gray lines
+    const grayLines = document.querySelectorAll('.hero-line-gray');
+    grayLines.forEach(line => {
+      ScrollTrigger.create({
+        trigger: line,
+        start: isMobile ? 'top 108%' : 'top 70%',
+        onEnter: () => {
+          gsap.to(line, { color: 'rgba(255, 255, 255, 0.85)', duration: 0.8, ease: 'power2.out' });
+        },
+        onLeaveBack: () => {
+          gsap.to(line, { color: 'var(--gray)', duration: 0.6, ease: 'power2.in' });
+        },
+      });
+    });
   }
 
   /* ===== HERO IMAGES HOVER EFFECTS ===== */
@@ -779,7 +802,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function initCardTilt() {
     if (window.innerWidth <= 768 || prefersReducedMotion) return;
 
-    const tiltCards = document.querySelectorAll('.awards-row, .expertise-banner, .stat-row, .exp-item');
+    const tiltCards = document.querySelectorAll('.stat-row, .exp-item');
 
     tiltCards.forEach(card => {
       card.addEventListener('mousemove', (e) => {
@@ -1011,6 +1034,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavActiveSection();
   initParallaxLayers();
   initExpertiseBannerInnerParallax();
+  initExpertiseBannerInteractions();
   initParallaxMicroInteractions();
   initCardTilt();
   initFooterNameGradient();
@@ -1020,12 +1044,232 @@ document.addEventListener('DOMContentLoaded', () => {
   initIconBounce();
   initScrollDirectionImages();
   initDynamicExpertiseHighlights();
+  initReviewRowHighlights();
+  initJapaneseScramble();
+
+  /* ============================================================
+     REVIEW ROW MOUSE HOVER HIGHLIGHT
+     ============================================================ */
+  function initReviewRowHighlights() {
+    const rows = document.querySelectorAll('.awards-row');
+    rows.forEach(row => {
+      // Mouse hover
+      row.addEventListener('mouseenter', () => {
+        rows.forEach(r => {
+          if (r !== row) {
+            gsap.to(r, { backgroundColor: 'transparent', color: 'rgba(255,255,255,1)', duration: 0.2, ease: 'power2.out', overwrite: 'auto' });
+            r.classList.remove('highlight');
+          }
+        });
+        row.classList.add('highlight');
+        gsap.to(row, { backgroundColor: '#ffffff', color: '#000000', duration: 0.25, ease: 'power2.out', overwrite: 'auto' });
+      });
+      row.addEventListener('mouseleave', () => {
+        row.classList.remove('highlight');
+        gsap.to(row, { backgroundColor: 'transparent', color: 'rgba(255,255,255,1)', duration: 0.25, ease: 'power2.out', overwrite: 'auto' });
+      });
+
+      // Touch support
+      row.addEventListener('touchstart', () => {
+        rows.forEach(r => {
+          gsap.to(r, { backgroundColor: 'transparent', color: 'rgba(255,255,255,1)', duration: 0.2, ease: 'power2.out', overwrite: 'auto' });
+          r.classList.remove('highlight');
+        });
+        row.classList.add('highlight');
+        gsap.to(row, { backgroundColor: '#ffffff', color: '#000000', duration: 0.25, ease: 'power2.out', overwrite: 'auto' });
+      }, { passive: true });
+
+      row.addEventListener('touchend', () => {
+        setTimeout(() => {
+          row.classList.remove('highlight');
+          gsap.to(row, { backgroundColor: 'transparent', color: 'rgba(255,255,255,1)', duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
+        }, 700);
+      }, { passive: true });
+    });
+  }
+
+  /* ============================================================
+     EXPERTISE BANNER INTERACTIONS
+     (image entrance · bg-text click-move · title scramble)
+     ============================================================ */
+  function initExpertiseBannerInteractions() {
+    if (prefersReducedMotion) return;
+    const banners = document.querySelectorAll('.expertise-banner');
+    const jpChars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+
+    banners.forEach((banner) => {
+      const imgContainer = banner.querySelector('.expertise-banner-image');
+      const bgText = banner.querySelector('.expertise-banner-bg-text');
+      const titleEl = banner.querySelector('.expertise-banner-title');
+
+      // 1 ── Image reveals top-to-bottom on scroll enter ────────────
+      if (imgContainer) {
+        gsap.fromTo(
+          imgContainer,
+          { clipPath: 'inset(0 0 100% 0)' },
+          {
+            clipPath: 'inset(0 0 0% 0)',
+            duration: 1.5,
+            ease: 'power3.out',
+            delay: 0.25,
+            scrollTrigger: {
+              trigger: banner,
+              start: 'top 90%',
+              toggleActions: 'play none none none',
+            },
+          }
+        );
+      }
+
+      // 2 ── Click right → bg text moves left; click left → moves right ──
+      if (bgText) {
+        banner.addEventListener('click', (e) => {
+          const rect = banner.getBoundingClientRect();
+          const isRightSide = e.clientX - rect.left > rect.width / 2;
+          const moveX = isRightSide ? -350 : 350;
+          gsap.killTweensOf(bgText, 'x');
+          gsap.to(bgText, { x: `+=${moveX}`, duration: 0.65, ease: 'power3.out' });
+          gsap.to(bgText, { x: 0, duration: 1.1, ease: 'elastic.out(1, 0.4)', delay: 0.9 });
+        });
+      }
+
+      // 3 ── Title scrambles to JP chars then back on scroll + click ────
+      if (titleEl) {
+        const originalHTML = titleEl.innerHTML;
+        const originalText = titleEl.textContent.trim().replace(/\s+/g, ' ');
+
+        function runScramble() {
+          if (titleEl.dataset.animating === 'true') return;
+          titleEl.dataset.animating = 'true';
+
+          const jpLen = Math.max(4, Math.round(originalText.replace(/ /g, '').length * 0.8));
+          let jpTarget = '';
+          for (let i = 0; i < jpLen; i++) {
+            jpTarget += jpChars[Math.floor(Math.random() * jpChars.length)];
+          }
+
+          const totalTicks = 44;
+          const halfTicks = 20;
+          let tick = 0;
+
+          const timer = setInterval(() => {
+            tick++;
+            if (tick <= halfTicks) {
+              const locked = Math.floor((tick / halfTicks) * jpTarget.length);
+              let out = '';
+              for (let i = 0; i < jpTarget.length; i++) {
+                out += i < locked ? jpTarget[i] : jpChars[Math.floor(Math.random() * jpChars.length)];
+              }
+              titleEl.textContent = out;
+            } else {
+              const locked = Math.floor(((tick - halfTicks) / (totalTicks - halfTicks)) * originalText.length);
+              let out = '';
+              for (let i = 0; i < originalText.length; i++) {
+                if (i < locked) {
+                  out += originalText[i];
+                } else if (originalText[i] === ' ') {
+                  out += ' ';
+                } else {
+                  out += jpChars[Math.floor(Math.random() * jpChars.length)];
+                }
+              }
+              titleEl.textContent = out;
+            }
+            if (tick >= totalTicks) {
+              clearInterval(timer);
+              titleEl.innerHTML = originalHTML;
+              titleEl.dataset.animating = 'false';
+            }
+          }, 45);
+        }
+
+        ScrollTrigger.create({ trigger: banner, start: 'top 80%', onEnter: () => runScramble() });
+        banner.addEventListener('click', () => runScramble());
+      }
+    });
+  }
+
+  /* ============================================================
+     JAPANESE TEXT SCRAMBLE → ENGLISH ON CLICK
+     ============================================================ */
+  function initJapaneseScramble() {
+    const jpToEn = {
+      'サイバーセキュリティ': 'CYBERSECURITY',
+      '専門分野': 'EXPERTISE',
+      'レビュー': 'REVIEWS',
+      '経験': 'EXPERIENCE',
+      'これまでのクライアント': 'OUR CLIENTS',
+      '認定機関': 'CERT BODIES',
+      'サービス': 'SERVICES',
+      '選ぶ理由': 'WHY CHOOSE',
+    };
+
+    const scrambleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@%&!?';
+    const selectors = [
+      '.section-label-jp',
+      '.section-label-jp-dark',
+      '.expertise-label-jp',
+      '.expertise-banner-sticky-jp',
+    ];
+
+    selectors.forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => {
+        const jpText = el.textContent.trim();
+        const enText = jpToEn[jpText];
+        if (!enText) return;
+
+        el.dataset.jpText = jpText;
+        el.dataset.enText = enText;
+        el.dataset.state = 'jp';
+        el.style.cursor = 'pointer';
+        el.title = 'Click to translate';
+
+        el.addEventListener('click', () => {
+          if (el.dataset.animating === 'true') return;
+          el.dataset.animating = 'true';
+
+          const target = el.dataset.state === 'jp' ? enText : jpText;
+          const totalDuration = 2000;
+          const tickInterval = 45;
+          const totalTicks = Math.round(totalDuration / tickInterval);
+          let tick = 0;
+
+          const timer = setInterval(() => {
+            tick++;
+            const progress = tick / totalTicks;
+            const lockedCount = Math.floor(progress * target.length);
+
+            let display = '';
+            for (let i = 0; i < target.length; i++) {
+              if (i < lockedCount) {
+                display += target[i];
+              } else if (target[i] === ' ') {
+                display += ' ';
+              } else {
+                display += scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+              }
+            }
+            el.textContent = display;
+
+            if (tick >= totalTicks) {
+              clearInterval(timer);
+              el.textContent = target;
+              el.dataset.state = el.dataset.state === 'jp' ? 'en' : 'jp';
+              el.dataset.animating = 'false';
+            }
+          }, tickInterval);
+        });
+      });
+    });
+  }
 
   /* ============================================================
      SCROLL DIRECTION IMAGE VISIBILITY
      ============================================================ */
   function initScrollDirectionImages() {
     if (prefersReducedMotion) return;
+
+    const isMobile = window.innerWidth <= 768;
 
     let lastScrollY = 0;
     let scrollDirection = 'down';
@@ -1051,75 +1295,89 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', onScroll, { passive: true });
 
-    // Image visibility handlers (excluding work item previews)
+    // Image visibility handlers (excluding work item previews and about-portrait)
     const imageSelectors = [
       '.intro-hero-img',
       '.hero-img-inline',
-      '.expertise-banner-image', 
-      '.about-portrait'
+      '.expertise-banner-image'
     ];
 
     imageSelectors.forEach(selector => {
       const elements = document.querySelectorAll(selector);
       
       elements.forEach(element => {
-        ScrollTrigger.create({
-          trigger: element,
-          start: "top 80%",
-          end: "bottom 20%",
-          onEnter: () => {
-            if (scrollDirection === 'down') {
+        if (isMobile) {
+          // On mobile: always add visible when element enters viewport, no direction check
+          ScrollTrigger.create({
+            trigger: element,
+            start: 'top 100%',
+            onEnter: () => element.classList.add('visible'),
+            onEnterBack: () => element.classList.add('visible'),
+          });
+        } else {
+          ScrollTrigger.create({
+            trigger: element,
+            start: 'top 80%',
+            onEnter: () => {
+              element.classList.add('visible');
+            },
+            onEnterBack: () => {
               element.classList.add('visible');
             }
-          },
-          onLeave: () => {
-            if (scrollDirection === 'down') {
-              element.classList.remove('visible');
-            }
-          },
-          onEnterBack: () => {
-            if (scrollDirection === 'up') {
-              element.classList.remove('visible');
-            }
-          },
-          onLeaveBack: () => {
-            if (scrollDirection === 'up') {
-              element.classList.remove('visible');
-            }
-          }
-        });
+          });
+        }
       });
     });
 
-    // Special handling for hero section images - show after text appears
+    // About portrait: grayscale → color on scroll in, back to grayscale on scroll out
+    const aboutPortraits = document.querySelectorAll('.about-portrait');
+    aboutPortraits.forEach(element => {
+      ScrollTrigger.create({
+        trigger: element,
+        start: 'top 85%',
+        end: 'bottom 15%',
+        onEnter: () => element.classList.add('visible'),
+        onLeave: () => element.classList.remove('visible'),
+        onEnterBack: () => element.classList.add('visible'),
+        onLeaveBack: () => element.classList.remove('visible'),
+      });
+    });
+
+    // Hero inline images: on mobile always show, on desktop use scroll direction
     const heroImages = document.querySelectorAll('.hero-img-inline');
     heroImages.forEach((img, index) => {
-      ScrollTrigger.create({
-        trigger: img.closest('.hero-line'),
-        start: "top 85%",
-        onEnter: () => {
-          if (scrollDirection === 'down') {
+      if (isMobile) {
+        // On mobile: always show when the hero section is visible
+        ScrollTrigger.create({
+          trigger: img.closest('.hero-line'),
+          start: 'top 100%',
+          onEnter: () => {
+            gsap.delayedCall(0.2 + (index * 0.08), () => {
+              img.classList.add('visible');
+            });
+          },
+        });
+      } else {
+        ScrollTrigger.create({
+          trigger: img.closest('.hero-line'),
+          start: 'top 85%',
+          end: 'bottom 5%',
+          onEnter: () => {
             gsap.delayedCall(0.3 + (index * 0.1), () => {
               img.classList.add('visible');
             });
-          }
-        },
-        onLeave: () => {
-          if (scrollDirection === 'down') {
+          },
+          onLeave: () => {
+            img.classList.remove('visible');
+          },
+          onEnterBack: () => {
+            img.classList.add('visible');
+          },
+          onLeaveBack: () => {
             img.classList.remove('visible');
           }
-        },
-        onEnterBack: () => {
-          if (scrollDirection === 'up') {
-            img.classList.remove('visible');
-          }
-        },
-        onLeaveBack: () => {
-          if (scrollDirection === 'up') {
-            img.classList.remove('visible');
-          }
-        }
-      });
+        });
+      }
     });
 
     // Ensure work item preview images are always ready for hover
@@ -1173,123 +1431,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // Get each expertise section separately to highlight one item per section
     const expertiseSections = document.querySelectorAll('.expertise-detail');
     
-    expertiseSections.forEach((section, sectionIndex) => {
+    expertiseSections.forEach((section) => {
       const listItems = section.querySelectorAll('.expertise-list-item');
-      let currentHighlighted = -1;
-      
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top 75%",
-        end: "bottom 25%",
-        onUpdate: (self) => {
-          const progress = self.progress;
-          let targetIndex;
-          
-          if (scrollDirection === 'down') {
-            // Normal order: 0, 1, 2, 3...
-            targetIndex = Math.floor(progress * listItems.length);
-          } else {
-            // Reverse order when scrolling up: show items from end to start
-            const reverseProgress = 1 - progress;
-            targetIndex = Math.max(0, Math.min(listItems.length - 1, listItems.length - 1 - Math.floor(reverseProgress * listItems.length)));
-          }
-          
-          // Always update regardless of direction
-          if (targetIndex >= 0 && targetIndex < listItems.length) {
-            // Don't override manual (click-based) highlights
-            const hasManualHighlights = Array.from(listItems).some(item => item.classList.contains('manual-highlight'));
-            if (!hasManualHighlights) {
-              // Remove previous scroll-based highlights and mouse highlights in this section
-              listItems.forEach(item => {
-                if (!item.classList.contains('manual-highlight')) {
-                  item.classList.remove('highlight', 'scroll-highlight', 'mouse-highlight');
-                }
-              });
-              
-              // Add scroll-based highlight to new item
-              listItems[targetIndex].classList.add('highlight', 'scroll-highlight');
-              currentHighlighted = targetIndex;
-            }
-          }
-        },
-        onLeave: () => {
-          // Clear scroll-based highlights when completely leaving section
-          listItems.forEach(item => item.classList.remove('scroll-highlight'));
-          currentHighlighted = -1;
-        },
-        onLeaveBack: () => {
-          // Clear scroll-based highlights when completely leaving section upward
-          listItems.forEach(item => item.classList.remove('scroll-highlight'));
-          currentHighlighted = -1;
-        }
-      });
 
-      // Mouse direction and click-based highlighting
-      listItems.forEach((item, index) => {
-        // Mouse enter based on mouse direction
+      listItems.forEach((item) => {
+        // Mouse: show white highlight on enter
         item.addEventListener('mouseenter', () => {
-          // Clear any existing mouse highlights in this section first
-          listItems.forEach(otherItem => {
-            if (otherItem.classList.contains('mouse-highlight')) {
-              otherItem.classList.remove('highlight', 'mouse-highlight');
-            }
-          });
-          
-          // Only add mouse highlight if conditions are met
-          const hasManualHighlights = Array.from(listItems).some(item => item.classList.contains('manual-highlight'));
-          if (!hasManualHighlights && mouseDirection === 'down') {
-            item.classList.add('highlight', 'mouse-highlight');
-          }
+          listItems.forEach(other => other.classList.remove('highlight', 'mouse-highlight'));
+          item.classList.add('highlight', 'mouse-highlight');
         });
 
+        // Mouse: remove white highlight on leave
         item.addEventListener('mouseleave', () => {
-          // Always remove mouse highlight when leaving, regardless of other conditions
-          if (item.classList.contains('mouse-highlight')) {
-            item.classList.remove('highlight', 'mouse-highlight');
-          }
+          item.classList.remove('highlight', 'mouse-highlight');
         });
 
-        // Click-based highlighting
-        item.addEventListener('click', (e) => {
-          e.preventDefault();
-          
-          // Clear all other types of highlights in this section first
-          listItems.forEach(otherItem => {
-            otherItem.classList.remove('scroll-highlight', 'mouse-highlight');
-          });
-          
-          // Toggle manual highlight
-          if (item.classList.contains('manual-highlight')) {
-            item.classList.remove('highlight', 'manual-highlight');
-          } else {
-            // Clear other manual highlights in this section
-            listItems.forEach(otherItem => otherItem.classList.remove('manual-highlight'));
-            item.classList.add('highlight', 'manual-highlight');
-          }
-          
-          // Add ripple effect
-          const rect = item.getBoundingClientRect();
-          const ripple = document.createElement('div');
-          ripple.classList.add('expertise-ripple');
-          ripple.style.left = '50%';
-          ripple.style.top = '50%';
-          item.style.position = 'relative';
-          item.appendChild(ripple);
-          
-          gsap.fromTo(ripple, {
-            scale: 0,
-            opacity: 0.6
-          }, {
-            scale: 4,
-            opacity: 0,
-            duration: 0.6,
-            ease: 'power2.out',
-            onComplete: () => ripple.remove()
-          });
-        });
-        
-        // Add cursor pointer for clickable items
-        item.style.cursor = 'pointer';
+        // Touch: show white highlight on touch
+        item.addEventListener('touchstart', () => {
+          listItems.forEach(other => other.classList.remove('highlight', 'mouse-highlight'));
+          item.classList.add('highlight', 'mouse-highlight');
+        }, { passive: true });
+
+        item.addEventListener('touchend', () => {
+          setTimeout(() => item.classList.remove('highlight', 'mouse-highlight'), 600);
+        }, { passive: true });
       });
     });
   }

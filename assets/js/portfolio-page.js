@@ -134,28 +134,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ===== OVERVIEW SECTION ===== */
   function initOverview() {
-    const num = document.querySelector('.project-section-num');
-    const title = document.querySelector('.project-section-title');
-    const right = document.querySelector('.project-overview-right');
-
-    if (num) {
-      gsap.to(num, {
+    document.querySelectorAll('.project-section-num').forEach(el => {
+      gsap.to(el, {
         opacity: 1, x: 0, duration: 0.7, ease: 'expo.out',
-        scrollTrigger: { trigger: num, start: 'top 85%' }
+        scrollTrigger: { trigger: el, start: 'top 85%' }
       });
-    }
-    if (title) {
-      gsap.to(title, {
+    });
+    document.querySelectorAll('.project-section-title').forEach(el => {
+      gsap.to(el, {
         opacity: 1, y: 0, duration: 1, ease: 'expo.out',
-        scrollTrigger: { trigger: title, start: 'top 85%' }
+        scrollTrigger: { trigger: el, start: 'top 85%' }
       });
-    }
-    if (right) {
-      gsap.to(right, {
+    });
+    document.querySelectorAll('.project-overview-right').forEach(el => {
+      gsap.to(el, {
         opacity: 1, y: 0, duration: 1, ease: 'expo.out',
-        scrollTrigger: { trigger: right, start: 'top 80%' }
+        scrollTrigger: { trigger: el, start: 'top 80%' }
       });
-    }
+    });
   }
 
   /* ===== FULL WIDTH IMAGE PARALLAX ===== */

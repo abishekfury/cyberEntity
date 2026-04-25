@@ -805,6 +805,111 @@ html.lenis { height: auto; }
   .portfolio-footer { padding: 0 24px; }
   .portfolio-footer-top { flex-direction: column; gap: 28px; padding: 30px 0 24px; }
   .portfolio-footer-clocks { gap: 16px; flex-wrap: wrap; }
-  .portfolio-footer-big-name span { font-size: 23vw; }
+  .portfolio-footer-big-name span { font-size: 12.5vw; }
   .scroll-hint { display: none; }
+}
+
+@media (max-width: 480px) {
+  .portfolio-footer-big-name span { font-size: 12.5vw; }
+}
+
+.project-split-image.char-bg {
+  background: #0a0a0a;
+}
+.project-split-image.char-bg img {
+  object-fit: contain;
+  object-position: bottom center;
+}
+
+/* ===== CERTIFICATION GRID ===== */
+.project-cert-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem 3rem;
+}
+
+.project-cert-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-cert-group h4 {
+  color: var(--red);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  margin-top: 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.project-cert-group + .project-cert-group h4 {
+  margin-top: 0;
+}
+
+.cert-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 2rem;
+}
+
+.cert-list:last-child {
+  margin-bottom: 0;
+}
+
+.cert-list li {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.cert-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 1px;
+  background: var(--red);
+}
+
+/* Certification overview section — tighter padding */
+.project-cert-overview {
+  padding: 70px 60px 80px !important;
+}
+
+@media (max-width: 1024px) {
+  .project-cert-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .project-cert-overview {
+    padding: 60px 40px 70px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-cert-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .project-cert-overview {
+    padding: 50px 24px 60px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-cert-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }

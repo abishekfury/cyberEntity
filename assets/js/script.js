@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPreloader();
   initNavbar();
   initMobileMenu();
+  initSplitHeroNav();
   initScrollReveal();
   initHeroAnimation();
   initAccordions();
@@ -41,11 +42,6 @@ function initIntroHeroAnimation() {
   const subtitle = document.querySelector('.intro-hero-subtitle');
   const name = document.querySelector('.intro-hero-name');
   const bottomSpans = document.querySelectorAll('.intro-hero-bottom span');
-  const heroImg = document.querySelector('.intro-hero-bg img');
-
-  if (heroImg) {
-    heroImg.classList.add('loaded');
-  }
 
   if (subtitle) {
     setTimeout(() => subtitle.classList.add('animate'), 200);
@@ -57,6 +53,74 @@ function initIntroHeroAnimation() {
 
   bottomSpans.forEach((span, i) => {
     setTimeout(() => span.classList.add('animate'), 800 + i * 150);
+  });
+
+  // Start hero image slideshow
+  initHeroSlideshow();
+  // Right panel stays hidden until user clicks hamburger
+}
+
+/* ===== HERO SLIDESHOW ===== */
+function initHeroSlideshow() {
+  const slides = document.querySelectorAll('.hero-slide');
+  if (!slides.length) return;
+
+  let current = 0;
+
+  // Show first slide immediately
+  slides[0].classList.add('active');
+
+  setInterval(() => {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 3500);
+}
+
+/* ===== SPLIT HERO NAV (hamburger inside left panel) ===== */
+function initSplitHeroNav() {
+  const splitMenuBtn = document.getElementById('splitMenuBtn');
+  const splitNavClose = document.getElementById('splitNavClose');
+  const splitHeroNav  = document.getElementById('splitHeroNav');
+
+  if (!splitMenuBtn || !splitHeroNav) return;
+
+  function openNav() {
+    splitMenuBtn.classList.add('active');
+    splitHeroNav.classList.add('open');
+    // Stagger links after panel starts expanding
+    setTimeout(() => splitHeroNav.classList.add('visible'), 80);
+    document.body.classList.add('no-scroll');
+  }
+
+  function closeNav() {
+    splitMenuBtn.classList.remove('active');
+    splitHeroNav.classList.remove('open', 'visible');
+    document.body.classList.remove('no-scroll');
+  }
+
+  splitMenuBtn.addEventListener('click', () => {
+    if (splitHeroNav.classList.contains('open')) {
+      closeNav();
+    } else {
+      openNav();
+    }
+  });
+
+  if (splitNavClose) {
+    splitNavClose.addEventListener('click', closeNav);
+  }
+
+  // Close on link click (both desktop and mobile)
+  splitHeroNav.querySelectorAll('.split-nav-link').forEach(link => {
+    link.addEventListener('click', closeNav);
+  });
+
+  // On resize: close if open (so panel doesn't get stuck)
+  window.addEventListener('resize', () => {
+    if (splitHeroNav.classList.contains('open')) {
+      closeNav();
+    }
   });
 }
 
@@ -180,26 +244,49 @@ function initAccordions() {
 /* ===== EXPERIENCE ACCORDIONS ===== */
 function initExperienceAccordions() {
   const items = document.querySelectorAll('.exp-item');
+
+  function openItem(item) {
+    items.forEach(i => {
+      i.classList.remove('active');
+      const b = i.querySelector('.exp-body');
+      if (b) b.style.maxHeight = '0';
+    });
+    item.classList.add('active');
+    const body = item.querySelector('.exp-body');
+    if (body) body.style.maxHeight = body.scrollHeight + 'px';
+  }
+
   items.forEach(item => {
     const header = item.querySelector('.exp-header');
     if (!header) return;
 
     header.addEventListener('click', () => {
       const isActive = item.classList.contains('active');
-
-      items.forEach(i => {
-        i.classList.remove('active');
-        const body = i.querySelector('.exp-body');
-        if (body) body.style.maxHeight = '0';
-      });
-
-      if (!isActive) {
-        item.classList.add('active');
+      if (isActive) {
+        item.classList.remove('active');
         const body = item.querySelector('.exp-body');
-        if (body) body.style.maxHeight = body.scrollHeight + 'px';
+        if (body) body.style.maxHeight = '0';
+      } else {
+        openItem(item);
       }
     });
   });
+
+  // Auto-open first item when section scrolls into view
+  const section = document.getElementById('why-us');
+  if (section && items.length) {
+    let opened = false;
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !opened) {
+          opened = true;
+          openItem(items[0]);
+          sectionObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.2 });
+    sectionObserver.observe(section);
+  }
 }
 
 /* ===== COUNTER ANIMATION ===== */
@@ -316,6 +403,20 @@ function initFeaturedWorkHover() {
       preview.style.opacity = '0';
       preview.style.transform = 'scale(0.85) rotate(-2deg)';
     });
+
+    // Touch support for mobile
+    let touchTimer = null;
+    item.addEventListener('touchstart', () => {
+      workItems.forEach(w => w.classList.remove('touch-active'));
+      item.classList.add('touch-active');
+      clearTimeout(touchTimer);
+      touchTimer = setTimeout(() => item.classList.remove('touch-active'), 2000);
+    }, { passive: true });
+
+    item.addEventListener('touchend', () => {
+      clearTimeout(touchTimer);
+      touchTimer = setTimeout(() => item.classList.remove('touch-active'), 1500);
+    }, { passive: true });
   });
 }
 

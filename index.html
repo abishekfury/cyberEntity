@@ -30,7 +30,7 @@
     </div>
   </div>
 
-  <!-- Navigation -->
+  <!-- Navigation (appears after scrolling past hero) -->
   <nav class="navbar" id="navbar">
     <a href="#intro-hero" class="nav-logo">
       <div style="color: var(--red); font-weight: 900; font-size: 24px; letter-spacing: -0.5px;">CYBERENTITYZ</div>
@@ -50,34 +50,72 @@
     <div class="badge-text">5.0 Rating</div>
   </div>
 
-  <!-- Mobile Menu -->
+  <!-- Mobile Menu (used by scrolled navbar) -->
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-content">
-      <a href="#services">Services</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#about">About</a>
-      <a href="#testimonials">Reviews</a>
-      <a href="#contact">Contact</a>
-      <a href="tel:09500551090">Call Now</a>
-      <a href="https://cyberentityz.com">Visit Site</a>
+        <a href="#services">Services</a>
+        <a href="#expertise">Certifications</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact">Contact</a>
+        <a href="tel:09500551090">Call Now</a>
     </div>
   </div>
 
-  <!-- ==================== SECTION 1: INTRO HERO ==================== -->
-  <section class="intro-hero" id="intro-hero">
-    <div class="intro-hero-bg">
-      <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1800&h=1200&fit=crop" alt="Cybersecurity workspace" class="intro-hero-img">
-    </div>
-    <div class="intro-hero-content">
-      <span class="intro-hero-subtitle">ETHICAL HACKING SOCIETY</span>
-      <h1 class="intro-hero-name">CYBERENTITYZ</h1>
-    </div>
-    <div class="intro-hero-bottom">
-      <span>SECURITY • VULNERABILITY ASSESSMENT • ETHICAL HACKING</span>
-      <span>5+ YEARS OF EXCELLENCE IN CYBERSECURITY TRAINING</span>
-      <span>CHENNAI, TAMIL NADU</span>
-    </div>
-  </section>
+  <!-- ==================== SECTION 1: SPLIT HERO ==================== -->
+  <section class="split-hero" id="intro-hero">
+
+    <!-- LEFT PANEL — Orange/Red -->
+    <div class="split-hero-left">
+
+      <!-- Top controls overlaid on left panel -->
+      <div class="split-hero-topbar">
+        <a href="tel:09500551090" class="split-hero-cta">Call Us</a>
+        <button class="split-hero-menu-btn" id="splitMenuBtn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <!-- Background slideshow -->
+      <div class="intro-hero-bg hero-slideshow">
+        <img src="assets/images/1.png" alt="Cybersecurity Expert" class="hero-slide active">
+        <img src="assets/images/2.png" alt="Cybersecurity Expert" class="hero-slide">
+        <img src="assets/images/3.png" alt="Cybersecurity Expert" class="hero-slide">
+        <img src="assets/images/4.png" alt="Cybersecurity Expert" class="hero-slide">
+        <img src="assets/images/5.png" alt="Cybersecurity Expert" class="hero-slide">
+      </div>
+
+      <!-- Hero content -->
+      <div class="intro-hero-content">
+        <span class="intro-hero-subtitle">ETHICAL HACKING SOCIETY</span>
+        <h1 class="intro-hero-name">CYBERENTITYZ</h1>
+      </div>
+
+      <!-- Bottom info -->
+      <div class="intro-hero-bottom">
+        <span>SECURITY • VULNERABILITY ASSESSMENT • ETHICAL HACKING</span>
+        <span>5+ YEARS OF EXCELLENCE IN CYBERSECURITY TRAINING</span>
+        <span>CHENNAI, TAMIL NADU</span>
+      </div>
+
+    </div><!-- /split-hero-left -->
+
+    <!-- RIGHT PANEL — Black navigation (desktop visible / mobile overlay) -->
+    <div class="split-hero-right" id="splitHeroNav">
+      <button class="split-hero-close" id="splitNavClose" aria-label="Close menu">&#10005;</button>
+      <nav class="split-nav-list">
+        <a href="#services"      class="split-nav-link">Services</a>
+        <a href="#expertise"     class="split-nav-link">Certifications</a>
+        <a href="#about"         class="split-nav-link">About</a>
+        <a href="#testimonials"  class="split-nav-link">Reviews</a>
+        <a href="#contact"       class="split-nav-link">Contact</a>
+        <a href="tel:09500551090" class="split-nav-link">Call Now</a>
+        <a href="https://cyberentityz.com" target="_blank" rel="noopener" class="split-nav-link">Visit Site</a>
+      </nav>
+    </div><!-- /split-hero-right -->
+
+  </section><!-- /split-hero -->
 
   <!-- ==================== SECTION 2: HERO TYPOGRAPHY ==================== -->
   <section class="hero" id="hero">
@@ -110,35 +148,35 @@
         </div>
       </div>
       <div class="featured-work-list">
-        <div class="work-item">
+        <div class="work-item" href="work/Global-Training.html">
           <span class="work-item-name">Global Certification Training</span>
           <span class="work-item-arrow">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 20L20 4M20 4H8M20 4V16" stroke="currentColor" stroke-width="2"/></svg>
           </span>
           <div class="work-item-preview"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop" alt="Certification Training"></div>
         </div>
-        <div class="work-item">
+        <div class="work-item" href="work/Skill-Programs.html">
           <span class="work-item-name">Skill Training Programmes</span>
           <span class="work-item-arrow">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 20L20 4M20 4H8M20 4V16" stroke="currentColor" stroke-width="2"/></svg>
           </span>
           <div class="work-item-preview"><img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=400&h=300&fit=crop" alt="Skills Training"></div>
         </div>
-        <div class="work-item">
+        <div class="work-item" href="work/Pearson-VUE.html">
           <span class="work-item-name">Pearson VUE Test Centre</span>
           <span class="work-item-arrow">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 20L20 4M20 4H8M20 4V16" stroke="currentColor" stroke-width="2"/></svg>
           </span>
           <div class="work-item-preview"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop" alt="Test Centre"></div>
         </div>
-        <div class="work-item">
+        <div class="work-item" href="work/Service-Academia.html">
           <span class="work-item-name">Services for Academia</span>
           <span class="work-item-arrow">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 20L20 4M20 4H8M20 4V16" stroke="currentColor" stroke-width="2"/></svg>
           </span>
           <div class="work-item-preview"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=300&fit=crop" alt="Academia Services"></div>
         </div>
-        <div class="work-item">
+        <div class="work-item" href="work/Service-Organiztions.html">
           <span class="work-item-name">Services for IT Organizations</span>
           <span class="work-item-arrow">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 20L20 4M20 4H8M20 4V16" stroke="currentColor" stroke-width="2"/></svg>
@@ -149,170 +187,183 @@
     </div>
   </section>
 
-  <!-- ==================== SECTION 4: EXPERTISE ==================== -->
+  <!-- ==================== SECTION 4: CERTIFICATIONS ==================== -->
   <section class="expertise" id="expertise">
     <div class="expertise-header">
       <div class="expertise-left-header">
-        <div class="expertise-label">MY EXPERTISE</div>
-        <div class="expertise-label-jp">専門分野</div>
+        <div class="expertise-label">OUR SERVICES</div>
+        <div class="expertise-label-jp">サービス</div>
       </div>
       <div class="expertise-right-header">
-        <h2 class="expertise-main-heading">CRAFTING DIGITAL EXPERIENCES THROUGH VISION, DESIGN, AND AI</h2>
+        <h2 class="expertise-main-heading">COMPREHENSIVE CYBERSECURITY TRAINING & CERTIFICATION EXCELLENCE</h2>
       </div>
     </div>
 
-    <!-- EXPERTISE 01 — AI -->
+    <!-- SERVICE 01 — GLOBAL CERTIFICATION TRAINING -->
     <div class="expertise-banner-sticky-bar">
-      <span>MY EXPERTISE</span>
-      <span class="expertise-banner-sticky-jp">専門分野</span>
+      <span>OUR SERVICES</span>
+      <span class="expertise-banner-sticky-jp">サービス</span>
     </div>
-    <div class="expertise-banner expertise-banner-red">
-      <div class="expertise-banner-bg-text">クリエイション</div>
+    <div class="expertise-banner expertise-banner-red expertise-banner-03">
+      <div class="expertise-banner-bg-text">CERTIFICATION</div>
       <div class="expertise-banner-image">
-        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1400&h=700&fit=crop" alt="AI Robot">
+        <img src="assets/images/1.png" alt="Cybersecurity Expert">
       </div>
       <div class="expertise-banner-content">
         <span class="expertise-banner-num">// 01</span>
-        <h3 class="expertise-banner-title">ARTIFICIAL<br>INTELLIGENCE</h3>
+        <h3 class="expertise-banner-title">GLOBAL<br>CERTIFICATION<br>TRAINING</h3>
       </div>
     </div>
     <div class="expertise-detail">
       <div class="expertise-detail-inner">
         <div class="expertise-number">01</div>
         <div class="expertise-info">
-          <h3 class="expertise-info-title">DESIGNING THE FUTURE WITH INTELLIGENT CREATIVE SYSTEMS</h3>
-          <p class="expertise-info-desc">I use AI as a creative amplifier — building custom tools, producing on-brand imagery, training custom LoRAs, and designing automated workflows that accelerate output. Across image, video, audio, copy, and code, AI removes the friction once inherent in ideation and iteration, enabling faster exploration, broader experimentation, and more fully realized creative ideas.</p>
+          <h3 class="expertise-info-title">INDUSTRY-RECOGNIZED CERTIFICATIONS FOR A CAREER IN CYBERSECURITY</h3>
+          <p class="expertise-info-desc">We prepare students for globally recognized cybersecurity certifications from CompTIA, EC-Council, ISACA, Offensive Security, and more. Our training is aligned with industry standards, delivering expert-led sessions, hands-on labs, mock tests, interview preparation, and career guidance to ensure your success.</p>
           <div class="expertise-list">
-            <div class="expertise-list-item"><span>Generative AI Systems</span><span>01</span></div>
-            <div class="expertise-list-item"><span>AI-Assisted Development</span><span>02</span></div>
-            <div class="expertise-list-item"><span>Custom LoRA Training</span><span>03</span></div>
-            <div class="expertise-list-item"><span>Advanced Prompt Engineering</span><span>04</span></div>
-            <div class="expertise-list-item"><span>Workflow Automation (n8n)</span><span>05</span></div>
-            <div class="expertise-list-item"><span>Creative AI Pipelines</span><span>06</span></div>
+            <div class="expertise-list-item"><span>CompTIA (A+, Network+, Security+, CySA+, PenTest+, SecurityX)</span><span>01</span></div>
+            <div class="expertise-list-item"><span>EC-Council (CEH, CEH Master, CPENT, CCISO, CHFI)</span><span>02</span></div>
+            <div class="expertise-list-item"><span>ISACA (CISA, CISM, CRISC, CDPSE)</span><span>03</span></div>
+            <div class="expertise-list-item"><span>Offensive Security (OSCP, OSCP+)</span><span>04</span></div>
+            <div class="expertise-list-item"><span>Cisco (CCNA, CCNP) & PMI (PMP)</span><span>05</span></div>
+            <div class="expertise-list-item"><span>ISC2 (CISSP) & ISO/IEC 27001:2022 ISMS</span><span>06</span></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- EXPERTISE 02 — CREATIVE LEADERSHIP -->
+    <!-- SERVICE 02 — SKILL TRAINING PROGRAMMES -->
     <div class="expertise-banner-sticky-bar">
-      <span>MY EXPERTISE</span>
-      <span class="expertise-banner-sticky-jp">専門分野</span>
+      <span>OUR SERVICES</span>
+      <span class="expertise-banner-sticky-jp">サービス</span>
     </div>
-    <div class="expertise-banner expertise-banner-red">
-      <div class="expertise-banner-bg-text">リーダーシップ</div>
+    <div class="expertise-banner expertise-banner-red expertise-banner-03">
+      <div class="expertise-banner-bg-text">TRAINING</div>
       <div class="expertise-banner-image">
-        <img src="https://images.unsplash.com/photo-1590086782957-93c06ef21604?w=1400&h=700&fit=crop" alt="Samurai">
+        <img src="assets/images/2.png" alt="Cybersecurity Expert">
       </div>
       <div class="expertise-banner-content">
         <span class="expertise-banner-num">// 02</span>
-        <h3 class="expertise-banner-title">CREATIVE<br>LEADERSHIP</h3>
+        <h3 class="expertise-banner-title">SKILL TRAINING<br>PROGRAMMES</h3>
       </div>
     </div>
     <div class="expertise-detail">
       <div class="expertise-detail-inner">
         <div class="expertise-number">02</div>
         <div class="expertise-info">
-          <h3 class="expertise-info-title">UNIFYING VISION, STRATEGY, AND EXECUTION INTO COHESIVE EXPERIENCES</h3>
-          <p class="expertise-info-desc">I provide brand-first creative direction rooted in vision and clarity — uncovering a brand's "why" and aligning design, voice, and experience into cohesive systems. I connect the big picture across visual, written, audio, and motion to ensure every touchpoint feels intentional.</p>
+          <h3 class="expertise-info-title">HANDS-ON TRAINING ACROSS ALL KEY CYBERSECURITY DOMAINS</h3>
+          <p class="expertise-info-desc">Comprehensive, industry-focused programmes covering every essential area of cybersecurity and IT infrastructure. Delivered through practical labs, real-world tools, and structured learning paths to ensure job-ready skills across all critical domains.</p>
           <div class="expertise-list">
-            <div class="expertise-list-item"><span>Brand Vision & Alignment</span><span>01</span></div>
-            <div class="expertise-list-item"><span>Art Direction</span><span>02</span></div>
-            <div class="expertise-list-item"><span>Cross-Disciplinary Leadership</span><span>03</span></div>
-            <div class="expertise-list-item"><span>Concept Development</span><span>04</span></div>
-            <div class="expertise-list-item"><span>Design Systems Thinking</span><span>05</span></div>
-            <div class="expertise-list-item"><span>Visual Storytelling</span><span>06</span></div>
-            <div class="expertise-list-item"><span>Stakeholder Collaboration</span><span>07</span></div>
-            <div class="expertise-list-item"><span>Creative Review & Critique</span><span>08</span></div>
+            <div class="expertise-list-item"><span>Hardware & Networking</span><span>01</span></div>
+            <div class="expertise-list-item"><span>Server & Linux</span><span>02</span></div>
+            <div class="expertise-list-item"><span>Ethical Hacking & Pentest Tools</span><span>03</span></div>
+            <div class="expertise-list-item"><span>Dark Web Security</span><span>04</span></div>
+            <div class="expertise-list-item"><span>Cloud Security</span><span>05</span></div>
+            <div class="expertise-list-item"><span>Governance, Risk & Compliance (GRC)</span><span>06</span></div>
+            <div class="expertise-list-item"><span>Security Audit & SOC</span><span>07</span></div>
+            <div class="expertise-list-item"><span>VAPT Core</span><span>08</span></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- EXPERTISE 03 — BRANDING -->
+    <!-- SERVICE 03 — PEARSON VUE TEST CENTRE -->
     <div class="expertise-banner-sticky-bar">
-      <span>MY EXPERTISE</span>
-      <span class="expertise-banner-sticky-jp">専門分野</span>
+      <span>OUR SERVICES</span>
+      <span class="expertise-banner-sticky-jp">サービス</span>
     </div>
-    <div class="expertise-banner expertise-banner-red">
-      <div class="expertise-banner-bg-text">ブランディング</div>
+    <div class="expertise-banner expertise-banner-red expertise-banner-03">
+      <div class="expertise-banner-bg-text">TEST CENTRE</div>
       <div class="expertise-banner-image">
-        <img src="https://images.unsplash.com/photo-1635002962487-6cd868e92266?w=1400&h=700&fit=crop" alt="Robot">
+        <img src="assets/images/3.png" alt="Cybersecurity Expert">
       </div>
       <div class="expertise-banner-content">
         <span class="expertise-banner-num">// 03</span>
-        <h3 class="expertise-banner-title">BRANDING</h3>
+        <h3 class="expertise-banner-title">PEARSON VUE<br>TEST CENTRE</h3>
       </div>
     </div>
     <div class="expertise-detail">
       <div class="expertise-detail-inner">
         <div class="expertise-number">03</div>
         <div class="expertise-info">
-          <h3 class="expertise-info-title">TRANSFORMING PURPOSE INTO BRANDS PEOPLE FEEL AND BELIEVE IN</h3>
-          <p class="expertise-info-desc">I help brands uncover their "why" and translate it into identity, voice, and positioning that feel authentic and emotionally resonant — creating brands that connect deeply with the people they are meant to serve.</p>
+          <h3 class="expertise-info-title">SECURE, AUTHORIZED TESTING FOR GLOBALLY RECOGNIZED CERTIFICATIONS</h3>
+          <p class="expertise-info-desc">CYBERENTITYZ is a Pearson VUE Authorized Test Centre, providing a secure and professional testing environment for globally recognized certification exams from CompTIA, EC-Council, Cisco, Microsoft, and many more — meeting all international testing standards.</p>
           <div class="expertise-list">
-            <div class="expertise-list-item"><span>Brand Discovery</span><span>01</span></div>
-            <div class="expertise-list-item"><span>Uncovering the "Why"</span><span>02</span></div>
-            <div class="expertise-list-item"><span>Brand Strategy</span><span>03</span></div>
-            <div class="expertise-list-item"><span>Positioning & Differentiation</span><span>04</span></div>
-            <div class="expertise-list-item"><span>Brand Voice & Messaging</span><span>05</span></div>
-            <div class="expertise-list-item"><span>Brand Guidelines</span><span>06</span></div>
-            <div class="expertise-list-item"><span>Emotional Brand Connection</span><span>07</span></div>
+            <div class="expertise-list-item"><span>Secure, Exam-Ready Infrastructure</span><span>01</span></div>
+            <div class="expertise-list-item"><span>Quiet & Fully Monitored Environment</span><span>02</span></div>
+            <div class="expertise-list-item"><span>Multiple Global Certification Exams</span><span>03</span></div>
+            <div class="expertise-list-item"><span>Easy Scheduling & Candidate Assistance</span><span>04</span></div>
+            <div class="expertise-list-item"><span>CompTIA · EC-Council · Cisco · Microsoft</span><span>05</span></div>
+            <div class="expertise-list-item"><span>Standardized International Testing Standards</span><span>06</span></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- EXPERTISE 04 — WEB DESIGN -->
+    <!-- SERVICE 04 — SERVICES FOR ACADEMIA -->
     <div class="expertise-banner-sticky-bar">
-      <span>MY EXPERTISE</span>
-      <span class="expertise-banner-sticky-jp">専門分野</span>
+      <span>OUR SERVICES</span>
+      <span class="expertise-banner-sticky-jp">サービス</span>
     </div>
-    <div class="expertise-banner expertise-banner-red">
-      <div class="expertise-banner-bg-text">ウエブデザイン</div>
+    <div class="expertise-banner expertise-banner-red expertise-banner-03">
+      <div class="expertise-banner-bg-text">ACADEMIA</div>
       <div class="expertise-banner-image">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1400&h=700&fit=crop" alt="Web Design">
+        <img src="assets/images/4.png" alt="Cybersecurity Expert">
       </div>
       <div class="expertise-banner-content">
         <span class="expertise-banner-num">// 04</span>
-        <h3 class="expertise-banner-title">WEB DESIGN &<br>DEVELOPMENT</h3>
+        <h3 class="expertise-banner-title">SERVICES FOR<br>ACADEMIA</h3>
       </div>
     </div>
     <div class="expertise-detail">
       <div class="expertise-detail-inner">
         <div class="expertise-number">04</div>
         <div class="expertise-info">
-          <h3 class="expertise-info-title">WHERE THOUGHTFUL DESIGN MEETS SCALABLE ENGINEERING</h3>
-          <p class="expertise-info-desc">With over 20 years of experience, I design and build conversion-focused websites that balance aesthetics and usability — specializing in UX/UI, WordPress development, custom code, and integrating generative AI into modern digital products.</p>
+          <h3 class="expertise-info-title">BRIDGING THE GAP BETWEEN ACADEMIC LEARNING AND INDUSTRY REQUIREMENTS</h3>
+          <p class="expertise-info-desc">We collaborate with schools and colleges to deliver industry-relevant cybersecurity education, equipping students, faculty, and institutions with practical knowledge and hands-on experience. Our goal is to create job-ready graduates and future-proof academic institutions.</p>
           <div class="expertise-list">
-            <div class="expertise-list-item"><span>UX/UI Design</span><span>01</span></div>
-            <div class="expertise-list-item"><span>Conversion-Focused Design</span><span>02</span></div>
-            <div class="expertise-list-item"><span>Web Architecture</span><span>03</span></div>
-            <div class="expertise-list-item"><span>WordPress Development</span><span>04</span></div>
-            <div class="expertise-list-item"><span>Custom Theme Development</span><span>05</span></div>
-            <div class="expertise-list-item"><span>JavaScript</span><span>06</span></div>
-            <div class="expertise-list-item"><span>AI-Integrated Applications</span><span>07</span></div>
-            <div class="expertise-list-item"><span>Modern Dev Workflows (Replit, Cursor, Antigravity)</span><span>08</span></div>
+            <div class="expertise-list-item"><span>Cybersecurity Awareness Programs</span><span>01</span></div>
+            <div class="expertise-list-item"><span>Hands-on Workshops & Industrial Visits</span><span>02</span></div>
+            <div class="expertise-list-item"><span>Internship Programs with Real-Time Projects</span><span>03</span></div>
+            <div class="expertise-list-item"><span>Webinars & Expert Sessions</span><span>04</span></div>
+            <div class="expertise-list-item"><span>Faculty Awareness & Development Programs</span><span>05</span></div>
+            <div class="expertise-list-item"><span>Mock Interviews & Resume / ATS Optimization</span><span>06</span></div>
+            <div class="expertise-list-item"><span>College Lab Setup & Network Architecture Consulting</span><span>07</span></div>
+            <div class="expertise-list-item"><span>Global Certification Guidance</span><span>08</span></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- EXPERTISE 05 — PERFORMANCE CREATIVE -->
+    <!-- SERVICE 05 — SERVICES FOR IT ORGANIZATIONS -->
+    <div class="expertise-banner-sticky-bar">
+      <span>OUR SERVICES</span>
+      <span class="expertise-banner-sticky-jp">サービス</span>
+    </div>
+    <div class="expertise-banner expertise-banner-red expertise-banner-03">
+      <div class="expertise-banner-bg-text">ENTERPRISE</div>
+      <div class="expertise-banner-image">
+        <img src="assets/images/5.png" alt="Cybersecurity Expert">
+      </div>
+      <div class="expertise-banner-content">
+        <span class="expertise-banner-num">// 05</span>
+        <h3 class="expertise-banner-title">SERVICES FOR<br>IT ORGANIZATIONS</h3>
+      </div>
+    </div>
     <div class="expertise-detail">
       <div class="expertise-detail-inner">
         <div class="expertise-number">05</div>
         <div class="expertise-info">
-          <h3 class="expertise-info-title">DESIGNING PERFORMANCE-DRIVEN CREATIVE THAT TURNS ATTENTION INTO ACTION</h3>
-          <p class="expertise-info-desc">I design performance-driven digital creative that turns attention into action — crafting social content, paid ads, and campaign systems optimized for conversion, clarity, and consistency, guided by audience insight, creative testing, and measurable results.</p>
+          <h3 class="expertise-info-title">STRENGTHENING YOUR SECURITY POSTURE FROM THE INSIDE OUT</h3>
+          <p class="expertise-info-desc">We help organizations protect critical assets, reduce risks, and ensure compliance through comprehensive cybersecurity solutions tailored to modern business environments — from employee awareness training to advanced penetration testing and virtual CISO services.</p>
           <div class="expertise-list">
-            <div class="expertise-list-item"><span>Conversion-Focused Creative</span><span>01</span></div>
-            <div class="expertise-list-item"><span>Paid Media Creative Strategy</span><span>02</span></div>
-            <div class="expertise-list-item"><span>Campaign Systems Design</span><span>03</span></div>
-            <div class="expertise-list-item"><span>Funnel-Aware Creative</span><span>04</span></div>
-            <div class="expertise-list-item"><span>Platform-Specific Optimization</span><span>05</span></div>
-            <div class="expertise-list-item"><span>Visual Consistency at Scale</span><span>06</span></div>
-            <div class="expertise-list-item"><span>Performance-Driven Storytelling</span><span>07</span></div>
+            <div class="expertise-list-item"><span>Cybersecurity Awareness Training (Employees)</span><span>01</span></div>
+            <div class="expertise-list-item"><span>Phishing Simulation & Training</span><span>02</span></div>
+            <div class="expertise-list-item"><span>Vulnerability Assessment & Penetration Testing (VAPT)</span><span>03</span></div>
+            <div class="expertise-list-item"><span>Certification Consulting</span><span>04</span></div>
+            <div class="expertise-list-item"><span>Incident Response & Forensics</span><span>05</span></div>
+            <div class="expertise-list-item"><span>Infrastructure Architecture Consulting</span><span>06</span></div>
+            <div class="expertise-list-item"><span>vCISO (Virtual Chief Information Security Officer)</span><span>07</span></div>
           </div>
         </div>
       </div>
@@ -356,37 +407,55 @@
         <div class="awards-row">
           <div class="award-company">Vijay Vijay</div>
           <div class="award-org">CCNA Training</div>
-          <div class="award-title">"Training was very good and easy to understand. Certified tutors explain clearly and provide practical learning."</div>
+          <div class="award-title">"I attended the CCNA 200-301 Switching class at CyberEntityz. The training was very good and easy to understand. Certified tutors explain the concepts clearly and provide practical learning. Highly recommended for networking and cybersecurity training."</div>
           <div class="award-year">⭐⭐⭐⭐⭐</div>
         </div>
         <div class="awards-row highlight">
           <div class="award-company">Girish Naidu</div>
           <div class="award-org">Cybersecurity Training</div>
-          <div class="award-title">"Great learning experience. Trainers explain concepts clearly and provide hands-on practice with real-time tools."</div>
+          <div class="award-title">"I had a great learning experience at this cybersecurity institution. The trainers explain concepts clearly and provide hands-on practice with real-time tools and projects. I highly recommend this institute to anyone who wants to build a strong career in cybersecurity, at affordable price."</div>
           <div class="award-year">⭐⭐⭐⭐⭐</div>
         </div>
         <div class="awards-row">
           <div class="award-company">Jeevapriyan</div>
           <div class="award-org">Internship Program</div>
-          <div class="award-title">"Excellent internship experience. Mentors are supportive and I'm learning real-world cybersecurity skills."</div>
+          <div class="award-title">"I joined Cyberentityz as an intern and my experience has been excellent. The mentors are supportive, the training is practical, and I'm learning real-world cybersecurity skills. It's a great place for students who want hands-on experience."</div>
           <div class="award-year">⭐⭐⭐⭐⭐</div>
         </div>
         <div class="awards-row">
           <div class="award-company">Prasanna Stony</div>
           <div class="award-org">Workshop</div>
-          <div class="award-title">"Attended workshop on 21/02/2026. The work was too good. Knowledge provided by mentors are so precise."</div>
+          <div class="award-title">"I've attended workshop on 21/02/2026. The work was too good. The knowledge provided by the mentors are so precise. The whole team was so approachable. Learned something new today. Thanks to the team."</div>
           <div class="award-year">⭐⭐⭐⭐⭐</div>
         </div>
         <div class="awards-row">
           <div class="award-company">Veera Kumar</div>
           <div class="award-org">CISM Course</div>
-          <div class="award-title">"Completed CISM course and examination. Great experience with highly knowledgeable staff."</div>
+          <div class="award-title">"I have completed the CISM course and examination with Cyberentityz. It was a great experience, and the staffs were highly knowledgeable and provided excellent guidance and exam support."</div>
           <div class="award-year">⭐⭐⭐⭐⭐</div>
         </div>
         <div class="awards-row">
           <div class="award-company">Rajesh S G</div>
           <div class="award-org">CEH Online Training</div>
-          <div class="award-title">"Completed online Cybersecurity Certificate in CEH. Training helped me pass exam with confidence."</div>
+          <div class="award-title">"I completed my online Cybersecurity Certificate in CEH with Cyberentityz, and it was a great experience. The training helped me understand the concepts clearly and pass the exam with confidence. Special thanks to my instructor Sabhareeshwaran — he's the best."</div>
+          <div class="award-year">⭐⭐⭐⭐⭐</div>
+        </div>
+        <div class="awards-row">
+          <div class="award-company">Arjun S</div>
+          <div class="award-org">Cybersecurity Training</div>
+          <div class="award-title">"The teachers are very professional and friendly. Their teaching is clear, and the lab experience helps learn in a practical and effective way."</div>
+          <div class="award-year">⭐⭐⭐⭐⭐</div>
+        </div>
+        <div class="awards-row">
+          <div class="award-company">Bala</div>
+          <div class="award-org">Penetration Testing & VAPT</div>
+          <div class="award-title">"Really good place to learn cybersecurity. I joined the Penetration Testing + VAPT course and the teaching is easy to understand. They provide real-time server access where we can configure and practice. The staff have strong core knowledge, making it a great choice for beginners."</div>
+          <div class="award-year">⭐⭐⭐⭐⭐</div>
+        </div>
+        <div class="awards-row">
+          <div class="award-company">Naresh</div>
+          <div class="award-org">Penetration Testing & VAPT</div>
+          <div class="award-title">"One of the best institutions I have seen for learning Penetration Testing and VAPT. The staff have strong core knowledge and explain concepts very clearly. As a beginner in WiFi penetration testing, I'm able to understand and learn easily. Highly recommended for anyone starting in cybersecurity."</div>
           <div class="award-year">⭐⭐⭐⭐⭐</div>
         </div>
       </div>
@@ -407,28 +476,29 @@
     </div>
     <div class="about-bio">
       <p>At CYBERENTITYZ, we are committed to shaping the next generation of cybersecurity professionals through practical, real-world training. In an era where digital threats are constantly evolving, we focus on equipping students with the skills, knowledge, and confidence needed to secure modern digital environments.</p>
-      <p>Our training programs are designed and delivered by active industry professionals, ensuring that learners gain exposure to real-time cybersecurity practices. We specialize in key domains such as Cybersecurity, Network Security, GRC (Governance, Risk & Compliance), Security Audits, VAPT, Ethical Hacking, and Advanced Security Techniques.</p>
-      <p>What sets us apart is our hands-on, practical approach. Every course is built around real-world scenarios, supported by live labs and licensed industry tools, allowing students to move beyond theory and develop job-ready skills. With over 5+ years of experience, we have successfully helped students and institutions build strong foundations in cybersecurity.</p>
+      <p>Our training programs are designed and delivered by active industry professionals, ensuring that learners gain exposure to real-time cybersecurity practices. We specialize in key domains such as Cybersecurity, Network Security, GRC (Governance, Risk & Compliance), Security Audits, VAPT (Vulnerability Assessment & Penetration Testing), Ethical Hacking, and Advanced Security Techniques.</p>
+      <p>What sets us apart is our hands-on, practical approach. Every course is built around real-world scenarios, supported by live labs and licensed industry tools, allowing students to move beyond theory and develop job-ready skills. We also extend our expertise to schools, colleges, and organizations, offering cybersecurity awareness programs, workshops, internship training, and global certification guidance.</p>
+      <p>With over 5+ years of experience in delivering international certification training, we have successfully helped students and institutions build strong foundations in cybersecurity. At CYBERENTITYZ, we believe in more than just education — we focus on building future-ready professionals who can confidently tackle cyber threats and contribute to a safer digital world.</p>
     </div>
   </section>
 
-  <!-- ==================== SECTION 8: EXPERIENCE ==================== -->
-  <section class="experience" id="experience">
+  <!-- ==================== SECTION 8: WHY CHOOSE US ==================== -->
+  <section class="experience" id="why-us">
     <div class="experience-container">
       <div class="experience-header">
         <div class="experience-left">
-          <div class="section-label-dark">MY EXPERIENCE</div>
-          <div class="section-label-jp-dark">経験</div>
+          <div class="section-label-dark">WHY CHOOSE US</div>
+          <div class="section-label-jp-dark">選ぶ理由</div>
         </div>
         <div class="experience-right">
-          <h2 class="experience-heading">WORK EXPERIENCE SPANNING 15+ YEARS OF CREATIVITY, IMAGINATION, AND PASSION.</h2>
+          <h2 class="experience-heading">WHAT MAKES OUR TRAINING EFFECTIVE AND INDUSTRY-LEADING.</h2>
         </div>
       </div>
       <div class="experience-list">
-        <!-- JumpFactor -->
+        <!-- Expert Trainers -->
         <div class="exp-item">
           <button class="exp-header">
-            <span class="exp-company">JumpFactor</span>
+            <span class="exp-company">Expert-Led Training</span>
             <span class="exp-toggle">
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
                 <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="1.5"/>
@@ -440,27 +510,25 @@
           <div class="exp-body">
             <div class="exp-meta">
               <div class="exp-meta-left">
-                <span class="exp-role-tag">Creative Director</span>
-                <p class="exp-summary">Partnered with executive leadership to define brand purpose, reposition the organization, and elevate creative strategy as a core business driver.</p>
+                <span class="exp-role-tag">Real-Time Industry Professionals</span>
+                <p class="exp-summary">Every session is led by active cybersecurity practitioners who bring real-world knowledge and current industry insights directly to the classroom.</p>
               </div>
               <div class="exp-meta-right">
-                <span class="exp-location">Toronto, ON · May 2025 – March 2026</span>
+                <span class="exp-location">5+ Years · 1000+ Students Trained</span>
                 <ul class="exp-details">
-                  <li>Led brand discovery and positioning workshops ("Uncover Your Greatness"), aligning leadership, teams, and long-term vision across the organization.</li>
-                  <li>Architected a complete internal brand replatform, modernizing visual systems for consistency, scalability, and stronger market authority.</li>
-                  <li>Directed rapid turnaround rebrand and website realignment for a subsidiary business, resolving brand perception and conversion issues within months.</li>
-                  <li>Provided strategic creative leadership across design, development, and marketing teams, improving execution velocity and reducing cross-functional friction.</li>
-                  <li>Implemented AI-powered creative workflows that accelerated on-brand asset and video production by 40–60% while preserving creative integrity.</li>
-                  <li>Served as a senior creative advisor, translating complex business objectives into cohesive brand, marketing, and experiential strategies.</li>
+                  <li>Trainers with active industry experience in ethical hacking, VAPT, GRC, and security operations.</li>
+                  <li>Up-to-date curriculum aligned with current exam patterns and industry demands.</li>
+                  <li>Direct access to mentors for doubt resolution, career advice, and technical guidance.</li>
+                  <li>Sessions structured to bridge the gap between theoretical concepts and real-world application.</li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
-        <!-- FutureCraft -->
+        <!-- Hands-On Labs -->
         <div class="exp-item">
           <button class="exp-header">
-            <span class="exp-company">FutureCraft</span>
+            <span class="exp-company">Hands-On Lab Environment</span>
             <span class="exp-toggle">
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
                 <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="1.5"/>
@@ -472,23 +540,25 @@
           <div class="exp-body">
             <div class="exp-meta">
               <div class="exp-meta-left">
-                <span class="exp-role-tag">Senior Designer</span>
-                <p class="exp-summary">Led design initiatives for emerging tech brands, delivering high-impact visual identities and digital experiences.</p>
+                <span class="exp-role-tag">Real-World Tools & Scenarios</span>
+                <p class="exp-summary">Learn by doing. Our lab environment uses licensed industry tools and real-time server access so students gain practical, job-ready experience beyond textbooks.</p>
               </div>
               <div class="exp-meta-right">
-                <span class="exp-location">Remote · 2023 – 2025</span>
+                <span class="exp-location">Live Labs · Licensed Tools · Real Servers</span>
                 <ul class="exp-details">
-                  <li>Designed and delivered brand systems for 12+ clients across tech, SaaS, and e-commerce sectors.</li>
-                  <li>Developed comprehensive design guidelines ensuring brand consistency across all touchpoints.</li>
+                  <li>Hands-on penetration testing labs with real-time server configurations.</li>
+                  <li>Practice environments for ethical hacking, network security, VAPT, and SOC analysis.</li>
+                  <li>Industry-licensed tools used by professional security practitioners worldwide.</li>
+                  <li>Scenario-based exercises that mirror actual enterprise cybersecurity challenges.</li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
-        <!-- Muse Marketing Group -->
+        <!-- Career Support -->
         <div class="exp-item">
           <button class="exp-header">
-            <span class="exp-company">Muse Marketing Group</span>
+            <span class="exp-company">Certification & Career Support</span>
             <span class="exp-toggle">
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
                 <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="1.5"/>
@@ -500,18 +570,17 @@
           <div class="exp-body">
             <div class="exp-meta">
               <div class="exp-meta-left">
-                <span class="exp-role-tag">Founding Partner & Creative Director</span>
-                <p class="exp-summary">Helped grow and shape a boutique agency into a nationally recognized firm through brand leadership, systems thinking, and high-impact creative execution.</p>
+                <span class="exp-role-tag">Mock Tests · Interview Prep · Guidance</span>
+                <p class="exp-summary">We prepare you for the full journey — from acing your certification exam to landing your first or next cybersecurity role with confidence.</p>
               </div>
               <div class="exp-meta-right">
-                <span class="exp-location">Hamilton, ON · 2015 – 2023</span>
+                <span class="exp-location">50+ Global Certifications Supported</span>
                 <ul class="exp-details">
-                  <li>Partnered in scaling the agency from a founding team of 3 to a multidisciplinary team of 12, supporting operational growth, process maturity, and creative output.</li>
-                  <li>Contributed to national recognition as a Top Marketing Agency in Canada (Clutch, 2020) and Best Local Advertising Agency for three consecutive years.</li>
-                  <li>Led the agency's internal rebrand and positioning, strengthening market perception and supporting accelerated growth.</li>
-                  <li>Built, managed, and mentored multidisciplinary teams across design, photography, development, copywriting, SEO, and brand strategy.</li>
-                  <li>Directed over 80 website launches and numerous brand engagements, overseeing work from executive discovery through launch and post-launch evolution.</li>
-                  <li>Designed and implemented proprietary discovery workshops and long-term client partnership programs that elevated work quality, improved retention, and increased recurring revenue.</li>
+                  <li>Certification-oriented curriculum with updated exam patterns and practice questions.</li>
+                  <li>Mock tests simulating real exam conditions to build confidence and readiness.</li>
+                  <li>Interview preparation sessions covering technical and HR rounds.</li>
+                  <li>Resume preparation and ATS optimization to maximize job selection chances.</li>
+                  <li>Ongoing career guidance and mentorship from placement to professional growth.</li>
                 </ul>
               </div>
             </div>
@@ -521,15 +590,15 @@
     </div>
   </section>
 
-  <!-- ==================== SECTION 9: CLIENTS (after Experience) ==================== -->
-  <section class="clients" id="clients">
+  <!-- ==================== SECTION 9: CERTIFICATION BODIES ==================== -->
+  <section class="clients" id="certifications">
     <div class="clients-container">
       <div class="clients-left">
-        <div class="section-label">CLIENTS I'VE WORKED WITH</div>
-        <div class="section-label-jp">これまでのクライアント</div>
-        <h2 class="clients-heading">A DECADE OF SHAPING BRAND IDENTITIES FOR GLOBAL TECH LEADERS AND LOCAL CULTURAL ICONS.</h2>
-        <a href="#footer" class="connect-btn">
-          Connect with me
+        <div class="section-label">CERTIFICATION BODIES</div>
+        <div class="section-label-jp">認定機関</div>
+        <h2 class="clients-heading">GLOBALLY RECOGNIZED CERTIFICATIONS ACROSS ALL KEY CYBERSECURITY DOMAINS.</h2>
+        <a href="#contact" class="connect-btn">
+          Enroll Now
           <span class="connect-arrow">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="2"/>
@@ -539,7 +608,7 @@
       </div>
       <div class="clients-right">
         <div class="accordion">
-          <!-- Arts, Entertainment & Venues -->
+          <!-- CompTIA -->
           <div class="accordion-item active">
             <button class="accordion-header">
               <span class="accordion-icon">
@@ -548,25 +617,25 @@
                   <line x1="7" y1="12" x2="17" y2="12" stroke="currentColor" stroke-width="1.5"/>
                 </svg>
               </span>
-              <span class="accordion-title">Arts, Entertainment & Venues</span>
+              <span class="accordion-title">CompTIA Certifications</span>
             </button>
             <div class="accordion-body">
               <ul>
-                <li>97 South Song Sessions</li>
-                <li>Desert Star Estate</li>
-                <li>Lauzon Music</li>
-                <li>Liz Long</li>
-                <li>Ottawa Black Bears</li>
-                <li>Paranormal Tours</li>
-                <li>Reid Flocking</li>
-                <li>Steady Canoe Studio</li>
-                <li>Telling Tales Festival</li>
-                <li>The Cotton Factory</li>
-                <li>Tim Hawkes Music</li>
+                <li>CompTIA ITF+</li>
+                <li>CompTIA Tech+</li>
+                <li>CompTIA A+</li>
+                <li>CompTIA Network+</li>
+                <li>CompTIA Security+</li>
+                <li>CompTIA Cloud+</li>
+                <li>CompTIA Linux+</li>
+                <li>CompTIA Server+</li>
+                <li>CompTIA CySA+</li>
+                <li>CompTIA PenTest+</li>
+                <li>CompTIA SecurityX</li>
               </ul>
             </div>
           </div>
-          <!-- Legal & Professional -->
+          <!-- EC-Council -->
           <div class="accordion-item">
             <button class="accordion-header">
               <span class="accordion-icon">
@@ -576,17 +645,22 @@
                   <line x1="12" y1="7" x2="12" y2="17" stroke="currentColor" stroke-width="1.5" class="plus-v"/>
                 </svg>
               </span>
-              <span class="accordion-title">Legal & Professional</span>
+              <span class="accordion-title">EC-Council Certifications</span>
             </button>
             <div class="accordion-body">
               <ul>
-                <li>Ross & McBride LLP</li>
-                <li>SimpsonWigle LAW</li>
-                <li>Millars Lawyers</li>
+                <li>C|NDC</li>
+                <li>C|EH (Certified Ethical Hacker)</li>
+                <li>C|EH Master</li>
+                <li>C|PENT</li>
+                <li>C|SA</li>
+                <li>C|TIA</li>
+                <li>C|HFI</li>
+                <li>C|CISO</li>
               </ul>
             </div>
           </div>
-          <!-- Construction, Trades & Auto -->
+          <!-- ISACA -->
           <div class="accordion-item">
             <button class="accordion-header">
               <span class="accordion-icon">
@@ -596,17 +670,18 @@
                   <line x1="12" y1="7" x2="12" y2="17" stroke="currentColor" stroke-width="1.5" class="plus-v"/>
                 </svg>
               </span>
-              <span class="accordion-title">Construction, Trades & Auto</span>
+              <span class="accordion-title">ISACA Certifications</span>
             </button>
             <div class="accordion-body">
               <ul>
-                <li>Lakeshore Homes</li>
-                <li>Turkstra Lumber</li>
-                <li>Birchwood Automotive</li>
+                <li>CDPSE</li>
+                <li>CRISC</li>
+                <li>CISA</li>
+                <li>CISM</li>
               </ul>
             </div>
           </div>
-          <!-- Manufacturing & Logistics -->
+          <!-- Offensive Security -->
           <div class="accordion-item">
             <button class="accordion-header">
               <span class="accordion-icon">
@@ -616,16 +691,16 @@
                   <line x1="12" y1="7" x2="12" y2="17" stroke="currentColor" stroke-width="1.5" class="plus-v"/>
                 </svg>
               </span>
-              <span class="accordion-title">Manufacturing & Logistics</span>
+              <span class="accordion-title">Offensive Security</span>
             </button>
             <div class="accordion-body">
               <ul>
-                <li>SteelCity Manufacturing</li>
-                <li>Pacific Logistics Group</li>
+                <li>OSCP</li>
+                <li>OSCP+</li>
               </ul>
             </div>
           </div>
-          <!-- Healthcare & Wellness -->
+          <!-- Cisco & PMI -->
           <div class="accordion-item">
             <button class="accordion-header">
               <span class="accordion-icon">
@@ -635,16 +710,17 @@
                   <line x1="12" y1="7" x2="12" y2="17" stroke="currentColor" stroke-width="1.5" class="plus-v"/>
                 </svg>
               </span>
-              <span class="accordion-title">Healthcare & Wellness</span>
+              <span class="accordion-title">Cisco & PMI</span>
             </button>
             <div class="accordion-body">
               <ul>
-                <li>Wellness Hub</li>
-                <li>Mindful Practice</li>
+                <li>Cisco CCNA</li>
+                <li>Cisco CCNP</li>
+                <li>PMI – PMP</li>
               </ul>
             </div>
           </div>
-          <!-- Tech, Gaming & Agency -->
+          <!-- ISC2 & ISO -->
           <div class="accordion-item">
             <button class="accordion-header">
               <span class="accordion-icon">
@@ -654,13 +730,13 @@
                   <line x1="12" y1="7" x2="12" y2="17" stroke="currentColor" stroke-width="1.5" class="plus-v"/>
                 </svg>
               </span>
-              <span class="accordion-title">Tech, Gaming & Agency</span>
+              <span class="accordion-title">ISC2 & ISO Standards</span>
             </button>
             <div class="accordion-body">
               <ul>
-                <li>JumpFactor</li>
-                <li>FutureCraft</li>
-                <li>Pixel Forge</li>
+                <li>ISC2 – CISSP</li>
+                <li>ISO/IEC 27001:2022 ISMS</li>
+                <li>ISO/IEC 42001</li>
               </ul>
             </div>
           </div>
@@ -687,15 +763,18 @@
         </div>
       </div>
       <div class="footer-about">
-        <div class="footer-about-label">Address</div>
-        <p class="footer-about-text">📍 1st Floor, Kundan Complex, No.1 Parthasarathy Pettai Street, Anna Salai, Teynampet, Chennai, Tamil Nadu – 600086</p>
-        <br>
-        <div class="footer-about-label">Follow Us</div>
-        <p class="footer-about-text">
-          📸 <a href="https://instagram.com/cyberentityz" style="color: var(--red);">instagram.com/cyberentityz</a><br>
-          👤 <a href="https://facebook.com/cyberentityz" style="color: var(--red);">facebook.com/cyberentityz</a><br>
-          💼 <a href="https://linkedin.com/company/cyberentityz" style="color: var(--red);">linkedin.com/company/cyberentityz</a>
-        </p>
+        <div class="footer-about-row">
+          <div class="footer-about-label">Address</div>
+          <p class="footer-about-text">1st Floor, Kundan Complex, No.1 Parthasarathy Pettai Street, Anna Salai, Teynampet, Chennai, Tamil Nadu – 600086</p>
+        </div>
+        <div class="footer-about-row">
+          <div class="footer-about-label">Follow Us</div>
+          <div class="footer-social-links">
+            <a href="https://www.instagram.com/cyberentityz?igsh=MWExbGViMnpjZDRhOQ==" target="_blank" rel="noopener" class="footer-social-link">Instagram — @cyberentityz</a>
+            <a href="https://www.facebook.com/share/1CWFML5nvn/?mibextid=wwXIfr" target="_blank" rel="noopener" class="footer-social-link">Facebook — cyberentityz</a>
+            <a href="https://www.linkedin.com/company/cyberentityz/" target="_blank" rel="noopener" class="footer-social-link">LinkedIn — cyberentityz</a>
+          </div>
+        </div>
       </div>
       <div class="footer-big-name">
         <span>CYBERENTITYZ</span>

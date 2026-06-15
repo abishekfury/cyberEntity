@@ -2,6 +2,9 @@
    HERO SECTION SCROLLTRIGGER ANIMATIONS
    ============================================================ */
 
+// Declare lenis in global scope so it's accessible in resize/unload handlers
+let lenis;
+
 document.addEventListener('DOMContentLoaded', () => {
   // Register GSAP plugin
   gsap.registerPlugin(ScrollTrigger);
@@ -12,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ============================================================
      LENIS SMOOTH SCROLL
      ============================================================ */
-  let lenis;
   
   function initSmoothScroll() {
     if (prefersReducedMotion) return;

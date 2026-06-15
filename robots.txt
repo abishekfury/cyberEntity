@@ -1,0 +1,27 @@
+# ==============================================================================
+# CYBERENTITYZ - Robots.txt
+# ==============================================================================
+# This file tells search engines which pages they can and cannot crawl
+
+User-agent: *
+Allow: /
+
+# Disallow admin/config files
+Disallow: /.htaccess
+Disallow: /README.md
+
+# Disallow sensitive paths (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow crawling of images and assets
+Allow: /assets/
+Allow: /assets/images/
+Allow: /assets/css/
+Allow: /assets/js/
+
+# Sitemap location
+Sitemap: https://cyberentityz.com/sitemap.xml
+
+# Crawl delay (optional - uncomment if needed)
+# Crawl-delay: 10

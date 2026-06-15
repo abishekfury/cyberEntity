@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found | CYBERENTITYZ</title>
+  <meta name="description" content="The page you're looking for couldn't be found.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  
+  <style>
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --red: #ff4500;
+      --gray: rgba(255, 255, 255, 0.4);
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      background-color: var(--black);
+      color: var(--white);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Animated background grid */
+    .grid-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(255, 69, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 69, 0, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: gridMove 20s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes gridMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    /* Glitch effect overlay */
+    .glitch-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.03;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(255, 69, 0, 0.1) 0px,
+        transparent 2px,
+        transparent 4px
+      );
+      animation: glitchScan 8s linear infinite;
+    }
+
+    @keyframes glitchScan {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+
+    /* Main container */
+    .error-container {
+      text-align: center;
+      z-index: 10;
+      position: relative;
+      padding: 2rem;
+      max-width: 800px;
+    }
+
+    /* 404 Number */
+    .error-code {
+      font-size: clamp(120px, 25vw, 280px);
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -0.05em;
+      color: var(--white);
+      text-shadow: 
+        0 0 20px rgba(255, 69, 0, 0.5),
+        0 0 40px rgba(255, 69, 0, 0.3),
+        0 0 60px rgba(255, 69, 0, 0.2);
+      margin-bottom: 1rem;
+      position: relative;
+      animation: glitchText 3s infinite;
+    }
+
+    @keyframes glitchText {
+      0%, 90%, 100% {
+        transform: translate(0);
+      }
+      92% {
+        transform: translate(-2px, 2px);
+      }
+      94% {
+        transform: translate(2px, -2px);
+      }
+      96% {
+        transform: translate(-2px, -2px);
+      }
+      98% {
+        transform: translate(2px, 2px);
+      }
+    }
+
+    /* Error label */
+    .error-label {
+      font-size: clamp(14px, 3vw, 18px);
+      letter-spacing: 0.3em;
+      color: var(--red);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+    }
+
+    /* Error message */
+    .error-message {
+      font-size: clamp(18px, 4vw, 32px);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 1.5rem;
+      color: var(--white);
+    }
+
+    .error-description {
+      font-size: clamp(14px, 2.5vw, 18px);
+      line-height: 1.6;
+      color: var(--gray);
+      margin-bottom: 3rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Buttons */
+    .error-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 1rem 2.5rem;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 0;
+      transition: all 0.3s var(--ease-out-expo);
+      cursor: pointer;
+      border: none;
+      letter-spacing: 0.05em;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--white);
+      color: var(--black);
+      box-shadow: 0 0 30px rgba(255, 69, 0, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+    }
+
+    .btn-secondary:hover {
+      background: var(--white);
+      color: var(--black);
+      transform: translateY(-2px);
+    }
+
+    /* Lock icon animation */
+    .lock-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 2rem;
+      opacity: 0.3;
+      animation: lockFloat 3s ease-in-out infinite;
+    }
+
+    @keyframes lockFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .lock-icon svg {
+      width: 100%;
+      height: 100%;
+      fill: var(--red);
+      filter: drop-shadow(0 0 10px rgba(255, 69, 0, 0.5));
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .error-container {
+        padding: 1.5rem;
+      }
+
+      .error-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+    /* Ripple effect */
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      transform: scale(0);
+      animation: rippleEffect 0.6s ease-out;
+      pointer-events: none;
+    }
+
+    @keyframes rippleEffect {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background effects -->
+  <div class="grid-background"></div>
+  <div class="glitch-overlay"></div>
+
+  <!-- Main error content -->
+  <div class="error-container">
+    <!-- Lock icon -->
+    <div class="lock-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 1C8.676 1 6 3.676 6 7v3H4c-1.1 0-2 .9-2 2v9c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-9c0-1.1-.9-2-2-2h-2V7c0-3.324-2.676-6-6-6zm0 2c2.276 0 4 1.724 4 4v3H8V7c0-2.276 1.724-4 4-4zm0 10c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"/>
+      </svg>
+    </div>
+
+    <!-- Error code -->
+    <div class="error-code">404</div>
+    
+    <!-- Error label -->
+    <div class="error-label">ACCESS DENIED</div>
+    
+    <!-- Error message -->
+    <h1 class="error-message">PAGE NOT FOUND</h1>
+    
+    <!-- Error description -->
+    <p class="error-description">
+      The page you're trying to access doesn't exist or has been moved. 
+      Let's get you back to security.
+    </p>
+    
+    <!-- Action buttons -->
+    <div class="error-actions">
+      <a href="/" class="btn btn-primary" id="homeBtn">
+        Return Home
+      </a>
+      <a href="tel:09500551090" class="btn btn-secondary" id="contactBtn">
+        Contact Us
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Add ripple effect to buttons
+    document.querySelectorAll('.btn').forEach(button => {
+      button.addEventListener('click', function(e) {
+        const rect = this.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        const size = Math.max(rect.width, rect.height);
+        
+        ripple.className = 'ripple';
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+        ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => ripple.remove(), 600);
+      });
+    });
+
+    // Add glitch effect to 404 text randomly
+    const errorCode = document.querySelector('.error-code');
+    setInterval(() => {
+      if (Math.random() > 0.95) {
+        errorCode.style.textShadow = `
+          ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px 0 rgba(255, 0, 0, 0.7),
+          ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px 0 rgba(0, 255, 255, 0.7)
+        `;
+        setTimeout(() => {
+          errorCode.style.textShadow = '0 0 20px rgba(255, 69, 0, 0.5), 0 0 40px rgba(255, 69, 0, 0.3), 0 0 60px rgba(255, 69, 0, 0.2)';
+        }, 50);
+      }
+    }, 100);
+
+    // Track time on error page (analytics)
+    const startTime = Date.now();
+    window.addEventListener('beforeunload', () => {
+      const timeSpent = Math.round((Date.now() - startTime) / 1000);
+      console.log(`User spent ${timeSpent}s on 404 page`);
+    });
+  </script>
+</body>
+</html>
